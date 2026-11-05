@@ -32,4 +32,4 @@
 
 ## Verification (operator rule: no unit tests)
 
-`pnpm -C panel typecheck && pnpm -C panel build`, restart preview (kill the pid listening on :5178 — **not** `pkill -f` with a pattern your own shell matches), then `pnpm -C panel smoke` (add `--pause-roundtrip` only when nothing runs, queues or exists as a Ticket). Populated views: `.trellis/tasks/archive/2026-11/11-04-panel-ui/research/probe/fixture-render3.mjs` (browser-tab-only request interception; refuses POSTs).
+`pnpm -C panel typecheck && pnpm -C panel build`, restart preview (kill the pid listening on :5178 — **not** `pkill -f` with a pattern your own shell matches — then `scripts/dsh-superagent start`, which reopens the console pane in the `dsh-<profile>` tmux session), then `pnpm -C panel smoke` (add `--pause-roundtrip` only when nothing runs, queues or exists as a Ticket). Populated views: `.trellis/tasks/archive/2026-11/11-04-panel-ui/research/probe/fixture-render3.mjs` (browser-tab-only request interception; refuses POSTs).

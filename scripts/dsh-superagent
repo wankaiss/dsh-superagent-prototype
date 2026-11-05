@@ -15,6 +15,7 @@ import re
 import shlex
 import shutil
 import signal
+import socket
 import subprocess
 import sys
 import time
@@ -25,6 +26,10 @@ ROOT = Path(__file__).resolve().parent.parent
 ARTIFACTS = ROOT / '.artifacts'
 CONTROL = ARTIFACTS / 'control'
 KEEP_LOGS = 20
+# Optional standalone console (panel/); it runs in a pane beside the DSH pane when it has been built.
+PANEL = ROOT / 'panel'
+PANEL_PORT = os.environ.get('PANEL_PORT') or '5178'
+PANEL_VITE = PANEL / 'node_modules' / '.bin' / 'vite'
 
 
 def control(profile):
@@ -82,6 +87,62 @@ def processes(profile):
     return found + [pid] if pid not in found and running(pid, profile) else found
 
 
+def panes(session):
+    """Yield `(pane_id, pane_pid, start_command)` for every pane of tmux `session`; nothing when tmux or the session is absent."""
+    if not shutil.which('tmux'):
+        return
+    result = subprocess.run(['tmux', 'list-panes', '-s', '-t', '=' + session, '-F', '#{pane_id}\t#{pane_pid}\t#{pane_start_command}'],
+                            capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        parts = line.split('\t', 2)
+        if len(parts) == 3:
+            yield tuple(parts)
+
+
+def panel_panes(session):
+    """Return the ids of the console panes in `session`, found by their start command because pane ids restart with the tmux server."""
+    return [pane for pane, _, command in panes(session) if str(PANEL_VITE) in command]
+
+
+def panel_up():
+    """Return whether something listens on the console port."""
+    try:
+        socket.create_connection(('127.0.0.1', int(PANEL_PORT)), timeout=1).close()
+        return True
+    except OSError:
+        return False
+
+
+def stop_panel(session):
+    """Close the console panes of `session`; closing a pane hangs up Vite. Best effort: the console holds no state."""
+    for pane in panel_panes(session):
+        subprocess.run(['tmux', 'kill-pane', '-t', pane], capture_output=True)
+
+
+def start_panel(session, pid, url):
+    """Open the console in a pane beside the DSH pane whose process is `pid`; never fails the service start."""
+    try:
+        if panel_panes(session):
+            return
+        if not (PANEL / 'dist' / 'index.html').exists() or not PANEL_VITE.exists():
+            print('Console skipped: build it first (pnpm -C panel install && pnpm -C panel build).')
+            return
+        if panel_up():
+            print(f'Console skipped: something already listens on 127.0.0.1:{PANEL_PORT}.')
+            return
+        target = next((pane for pane, found, _ in panes(session) if found == str(pid)), None)
+        if target is None:
+            print('Console skipped: the DSH service does not run in a pane of tmux session ' + session + '.')
+            return
+        # The Vite path must stay in the command: panel_panes() finds the pane by it.
+        command = 'exec ' + shlex.join(['env', 'DSH_SUPERAGENT_URL=' + url, 'PANEL_PORT=' + PANEL_PORT, str(PANEL_VITE), 'preview'])
+        subprocess.run(['tmux', 'split-window', '-t', target, '-d', '-c', str(PANEL), command],
+                       check=True, capture_output=True, text=True)
+        print(f'Console: http://127.0.0.1:{PANEL_PORT}', flush=True)
+    except (OSError, subprocess.CalledProcessError) as error:
+        print('Console skipped: ' + str(error))
+
+
 def state(url):
     """Fetch health and setup status from the management API, or return None if unreachable."""
     request = urllib.request.Request(url.rstrip('/') + '/orchestrator/api/state',
@@ -129,7 +190,9 @@ def status(args):
     print(json.dumps({'pids': pids, 'cwd': str(ROOT), 'url': args.url,
                       'manually_stopped': stopped(args.profile), 'health': current and current['health'],
                       'errors': current and current['errors'], 'setup': current and current['setup'],
-                      'feishu': current and current['feishu']}, ensure_ascii=False, indent=2))
+                      'feishu': current and current['feishu'],
+                      # Informational only: the console never affects the exit code.
+                      'panel': f'http://127.0.0.1:{PANEL_PORT}' if panel_up() else None}, ensure_ascii=False, indent=2))
     return outcome(pids, current)
 
 
@@ -149,6 +212,8 @@ def stop(args, intentional=True):
             raise RuntimeError('Graceful stop timed out; no forced kill was sent. Check status.')
         time.sleep(0.5)
     (control(args.profile) / 'service.pid').unlink(missing_ok=True)
+    # After DSH: a console pane left behind would keep the session alive and split the next start across windows.
+    stop_panel('dsh-' + args.profile)
     print('dsh-superagent stopped. Automatic recovery is paused until start/restart.' if intentional else 'dsh-superagent stopped.')
 
 
@@ -169,6 +234,8 @@ def start(args):
         dsh = shutil.which('dsh')
         if not dsh or not shutil.which('tmux'):
             raise RuntimeError('Both dsh and tmux must be on PATH.')
+        # A console pane left without DSH would otherwise keep the session and put DSH in a second window.
+        stop_panel(session)
         exists = subprocess.run(['tmux', 'has-session', '-t', '=' + session],
                                 capture_output=True).returncode == 0
         if state(args.url) is not None:
@@ -187,9 +254,11 @@ def start(args):
         if pane.isdigit():
             (control(args.profile) / 'service.pid').write_text(pane + '\n')
         print('Log: ' + str(log), flush=True)
+        start_panel(session, pane, args.url)
     else:
         (control(args.profile) / 'service.pid').write_text(f'{pids[0]}\n')
         print(f'dsh-superagent already running (PID {pids[0]}); no duplicate started.', flush=True)
+        start_panel(session, pids[0], args.url)
     (control(args.profile) / 'manually-stopped').unlink(missing_ok=True)
     deadline = time.monotonic() + args.timeout
     while time.monotonic() < deadline:
