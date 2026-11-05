@@ -14,3 +14,9 @@ Verification: smoke only (`.trellis/spec/guides/lessons.md`).
 10. **Feishu DM** with path + top decisions; tick PRD criteria.
 
 Rollback: everything lives in `scratch/dsh-*`; delete those dirs to undo. No repo files change.
+
+## Post-E2E follow-up (2026-11-05, grill G7)
+
+- Workflow `arch-runtime-tag-swap` (1 swap agent, 2 adversarial verifiers with over-claim and consistency lenses, 1 fix agent) relabelled claims covered by E2E run 1 (`11-04-local-run/research/e2e.md`) as "RUNTIME-OBSERVED 2026-11-05"; everything else stays "(from code, runtime-unverified)". OPEN-15 narrowed, not closed; GitHub write-back stays dotted.
+- Verifiers found 15 problems (e.g. "gate ignores…" naming a component the evidence does not, rc.3 version claimed as tested, §8.4 sequence drawing an Eval the run did not take, Assignment state names claimed observed); 14 fixed, 1 partly (Stage 4 status was already Partial). Dispositions in `consistency-report.md` §7.5.
+- `review.html` rebuilt (454,549 bytes, no secrets); 14/14 Mermaid diagrams render at 1440 light/dark and 390, no overflow.
