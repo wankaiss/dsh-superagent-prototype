@@ -67,6 +67,10 @@ The GitHub Source drops items authored by the agent login (`src/sources/github.t
 - Synthetic `ClipboardEvent('paste')` no longer fills the composer; use CDP `Input.insertText` after focusing `#prompt-textarea`. Long text is turned into a "Pasted text" attachment; that is fine.
 - The reply DOM changed: no `[data-message-author-role]`, no `<pre>`. The response root is `[class*="DilResponseRoot"]`; fenced blocks are leaf `<span>`s inside it. Helpers: `scratch/dsh-prompts/{cdp.mjs,cdp-insert.mjs,extract.js}`.
 
+### DSH web UI needs its startup token URL once per browser (2026-11-05)
+
+`http://127.0.0.1:3082/` answers 401 "dsh web authentication required" until the browser has opened the URL `dsh web` printed at startup (`?token=…`, first line of the newest `.artifacts/dsh-superagent-*.log`). That URL answers 303 and sets an `HttpOnly`, `SameSite=Strict` cookie for 30 days. The `/orchestrator/api/*` routes do not need it. Never paste the token into chat or docs: open it via CDP (`/json/new?<url>`) or pipe it to `clip.exe`.
+
 ### Driving Claude Design (geraldyang profile) over CDP (2026-11-05)
 
 - Open in the right profile: `google-chrome-stable --user-data-dir=$HOME/.chrome-la-profile --profile-directory='Profile 1' https://claude.ai/design`; verify with `fetch('/api/account')` (email starts `gera…@gmail.com`) before inserting anything.

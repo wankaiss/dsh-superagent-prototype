@@ -17,6 +17,8 @@ pnpm preview          # http://127.0.0.1:5178
 
 For development with hot reload, use `pnpm dev` (same address).
 
+Links to the DSH UI (`http://127.0.0.1:3082/`) need a DSH sign-in once per browser. If DSH answers "authentication required", open the URL `dsh web` printed at startup (the first line of the newest log in `../.artifacts/`). It sets a 30-day cookie. The console's own API calls do not need it.
+
 Environment overrides: `PANEL_PORT` (default 5178) and `DSH_SUPERAGENT_URL` (default `http://127.0.0.1:3082`).
 
 ## How it talks to the service

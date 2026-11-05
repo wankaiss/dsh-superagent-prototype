@@ -146,7 +146,8 @@ export const safeUrl = (url: string | undefined | null): string | undefined => {
 export function ExternalLink({ href, children, className }: { href: string | undefined | null; children: ReactNode; className?: string }) {
   const url = safeUrl(href)
   if (!url) return <span className={className}>{children}</span>
-  return <a href={url} target="_blank" rel="noreferrer noopener"
+  // DSH's own web UI asks for its sign-in link once per browser; say so wherever the console links there.
+  return <a href={url} target="_blank" rel="noreferrer noopener" title={href === copy.dshUrl ? copy.dshAuthHint : undefined}
     className={cn('inline-flex max-w-full items-center gap-0.5 text-primary underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring', className)}>
     <span className="min-w-0 break-words">{children}</span><ArrowUpRightIcon aria-hidden className="size-3.5 shrink-0" />
     <span className="sr-only"> {copy.states.newTab}</span>

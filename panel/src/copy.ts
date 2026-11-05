@@ -21,6 +21,7 @@ export const copy = {
   skipLink: 'Skip to content',
   dash: '—',
   dshUrl: 'http://127.0.0.1:3082/',
+  dshAuthHint: 'DSH asks you to sign in once per browser. If it says "authentication required", open the URL dsh web printed at startup: the first line of the newest log in .artifacts/ in the repo. It sets a 30-day cookie.',
 
   nav: {
     label: 'Primary',

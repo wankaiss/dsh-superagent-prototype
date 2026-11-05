@@ -188,7 +188,7 @@ export function SystemPage() {
   const state = useStateView()
   const settings = useSettings()
   return <>
-    <PageHeader title={copy.system.title} description={copy.system.readOnly}
+    <PageHeader title={copy.system.title} description={<>{copy.system.readOnly} {copy.dshAuthHint}</>}
       actions={<ExternalLink href={copy.dshUrl} className={buttonVariants({ variant: 'outline' })}>{copy.system.editInDsh}</ExternalLink>} />
     <div className="flex flex-col gap-4">
       <div role="note" className="flex gap-2.5 rounded-lg border bg-card px-3.5 py-2.5">
