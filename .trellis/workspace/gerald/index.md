@@ -8,7 +8,7 @@
 
 <!-- @@@auto:current-status -->
 - **Active File**: `journal-1.md`
-- **Total Sessions**: 1
+- **Total Sessions**: 2
 - **Last Active**: 2026-11-05
 <!-- @@@/auto:current-status -->
 
@@ -19,7 +19,7 @@
 <!-- @@@auto:active-documents -->
 | File | Lines | Status |
 |------|-------|--------|
-| `journal-1.md` | ~31 | Active |
+| `journal-1.md` | ~71 | Active |
 <!-- @@@/auto:active-documents -->
 
 ---
@@ -29,6 +29,7 @@
 <!-- @@@auto:session-history -->
 | # | Date | Title | Commits | Branch |
 |---|------|-------|---------|--------|
+| 2 | 2026-11-05 | Build-history review; console runs in the DSH tmux pane | `a158bb5`, `90927f6` | `feat/panel-tmux-pane` |
 | 1 | 2026-11-05 | dsh-superagent: local run on DSH, panel console, E2E run 1 | `1c968f8`, `f6e3e76`, `25910ea` | `main` |
 <!-- @@@/auto:session-history -->
 

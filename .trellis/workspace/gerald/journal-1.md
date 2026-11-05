@@ -29,3 +29,43 @@ Ran dsh-superagent locally on DSH 0.2.1-rc.3 (profile superagent, panel 127.0.0.
 ### Status
 
 [OK] **Completed**
+
+
+## Session 2: Build-history review; console runs in the DSH tmux pane
+<!-- trellis-session: v=2 fp=d5a430cd451eb327 -->
+
+**Date**: 2026-11-05
+**Task**: Build-history review; console runs in the DSH tmux pane
+**Branch**: `feat/panel-tmux-pane`
+
+### Summary
+
+Reviewed how the project was built (upstream snapshot 8c32a9d, then local Trellis program in 1c968f8) with a multi-agent read + fact-check. Explained the running process tree and tmux. Stopped the agent and panel. scripts/dsh-superagent now opens the standalone console (vite preview :5178) in a second pane of the dsh-<profile> tmux window on start, closes it on stop, and reports it in status. Merged --no-ff into main and pushed. Deleted the merged local branches feat/panel-tmux-pane and feat/local-run-and-panel-ui.
+
+### Main Changes
+
+- scripts/dsh-superagent: start_panel/stop_panel/panes/panel_up; panes found by start command; leftover console pane closed before start and after stop; status gains informational 'panel' field
+- panel/README.md and .trellis/spec/frontend/panel-console.md: describe the script-managed console pane
+
+### Git Commits
+
+| Hash | Message |
+|------|---------|
+| `a158bb5` | feat(scripts): run the console in a pane beside DSH |
+| `90927f6` | Merge branch 'feat/panel-tmux-pane' |
+
+### Testing
+
+- [OK] Throwaway tmux session with sleep as the DSH pane: page served, proxy 502 with DSH down, no duplicate pane, clean stop with no vite/pnpm orphans, leftover-pane case removes the session
+- [OK] Not yet run end to end with the real agent (it was kept stopped)
+
+### Status
+
+[OK] **Completed**
+
+### Next Steps
+
+- Start with ~/.local/bin/dsh-superagent-local start and confirm the console pane appears
+- Commit panel/src/lib (ignored by the upstream lib/ rule; clean clones cannot build panel/)
+- Fix .gitignore research/raw glob (** not *); raw article copies are in public history
+- Replace the broad wankaiss GH_TOKEN with a fine-grained PAT; remove the invalid ZenoWangzy gh login
