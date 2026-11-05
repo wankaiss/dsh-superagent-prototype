@@ -91,7 +91,7 @@ The reply is no longer under `[class*="DilResponseRoot"]`; fenced blocks are `ma
 
 ### WeChat articles (`mp.weixin.qq.com`) cannot be fetched by automation (2026-11-04)
 
-curl, headless/real Chrome via CDP all hit the "环境异常 / 去验证" captcha; Codex computer-use refuses the domain by site-safety policy. Don't retry these paths. Ask the operator to pass the captcha in `chrome-la` (CDP :9223), then extract with `.trellis/tasks/11-04-article-capture/research/cdp-wechat.mjs`.
+curl, headless/real Chrome via CDP all hit the "环境异常 / 去验证" captcha; Codex computer-use refuses the domain by site-safety policy. Don't retry these paths. Ask the operator to pass the captcha in `chrome-la` (CDP :9223), then extract with `.trellis/tasks/archive/2026-11/11-04-article-capture/research/cdp-wechat.mjs`.
 
 ### DeepSeek model ids (2026-11-04)
 

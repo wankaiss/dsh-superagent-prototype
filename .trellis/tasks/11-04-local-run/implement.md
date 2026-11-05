@@ -49,4 +49,4 @@ Verification policy: smoke / e2e only (`.trellis/spec/guides/lessons.md`). Never
 - [x] 6 Start — **deviations:** (a) `scripts/dsh-superagent` patched to accept `MainThread` (Node 24 ps name); (b) key via `~/.local/bin/dsh-superagent-local` launcher. Key present in DSH process env.
 - [x] 7 Settings saved in order eval → executor → github → feishu → policy → prompts (disclosure line). `status` exit 0, setup problems null, all health ready, models `deepseek-official/deepseek-flash`, mode observe.
 - [x] 8 GitHub Source ready, `0 notifications; next poll ≥ 60s`
-- [ ] 9 E2E via Feishu — default profile is another tenant (232010), so automated user send impossible → operator asked by DM to send the @bot message; Monitor watching tickets.
+- [x] 9 E2E via Feishu (run 1 done 2026-11-05, see research/e2e.md; GitHub write path pending a code-changing request) — default profile is another tenant (232010), so automated user send impossible → operator asked by DM to send the @bot message; Monitor watching tickets.

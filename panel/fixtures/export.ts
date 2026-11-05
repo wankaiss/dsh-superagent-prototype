@@ -6,7 +6,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import * as sample from './sample.ts'
 
-const OUT = join(import.meta.dirname, '../../.trellis/tasks/11-04-panel-ui/research/design/fixtures')
+const OUT = join(import.meta.dirname, '../../.trellis/tasks/archive/2026-11/11-04-panel-ui/research/design/fixtures')
 
 /** Concrete request → the fixture that answers it, its file, and what it shows. */
 const files: { request: string; route: string; file: string; value: unknown; about: string }[] = [

@@ -27,9 +27,9 @@
 ## Copy and design
 
 - Every app-authored string lives in `src/copy.ts`. API text is data.
-- Tokens in `src/index.css` come from the Claude Design export (`.trellis/tasks/11-04-panel-ui/research/design/`); status colours use `--status-{ok,info,warn,danger,idle}` with `-foreground` / `-subtle`. Re-measure contrast (`research/design/contrast.mjs`) after changing a token.
+- Tokens in `src/index.css` come from the Claude Design export (`.trellis/tasks/archive/2026-11/11-04-panel-ui/research/design/`); status colours use `--status-{ok,info,warn,danger,idle}` with `-foreground` / `-subtle`. Re-measure contrast (`.trellis/tasks/archive/2026-11/11-04-panel-ui/research/design/contrast.mjs`) after changing a token.
 - Theme: `next-themes` with `attribute="class"`; dark tokens under `.dark`.
 
 ## Verification (operator rule: no unit tests)
 
-`pnpm -C panel typecheck && pnpm -C panel build`, restart preview (kill the pid listening on :5178 — **not** `pkill -f` with a pattern your own shell matches), then `pnpm -C panel smoke` (add `--pause-roundtrip` only when nothing runs, queues or exists as a Ticket). Populated views: `research/probe/fixture-render3.mjs` (browser-tab-only request interception; refuses POSTs).
+`pnpm -C panel typecheck && pnpm -C panel build`, restart preview (kill the pid listening on :5178 — **not** `pkill -f` with a pattern your own shell matches), then `pnpm -C panel smoke` (add `--pause-roundtrip` only when nothing runs, queues or exists as a Ticket). Populated views: `.trellis/tasks/archive/2026-11/11-04-panel-ui/research/probe/fixture-render3.mjs` (browser-tab-only request interception; refuses POSTs).

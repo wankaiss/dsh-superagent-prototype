@@ -36,15 +36,15 @@ The operator (GitHub `wankaiss`, Feishu personal app) can start dsh-superagent o
 
 ## Acceptance Criteria (smoke / e2e only)
 
-- [ ] `scripts/dsh-superagent status` exits 0.
-- [ ] `GET /orchestrator/api/state`: `setup.problem == null`, `setup.feishuProblem == null`, every `health` entry `ready`.
-- [ ] `GET /orchestrator/api/settings`: `eval.model` and `executor.model` = `deepseek-official/deepseek-flash`; `eval.mode == observe`.
-- [ ] GitHub Source `ready` and polling without error (intake proven only to this level; see D8).
-- [ ] E2E: an @bot message in the sandbox group from the operator's user identity becomes a Ticket that reaches a **running worker** (not just a Decision row), the worker gets a worktree of the sandbox repo, and the result lands on GitHub as `wankaiss` (branch, PR or issue comment) plus a threaded reply in the group.
-- [ ] Main Session and worker Session records show `deepseek-flash` (or the `deepseek-v4-flash` alias that resolves to it).
-- [ ] The `.artifacts/` startup log shows `[llm-deepseek-api-key] … loaded 2 model(s)` (key reached the tmux-launched process).
-- [ ] No secret in any tracked file (`git grep -nE 'sk-[0-9a-f]{20}|ghp_[A-Za-z0-9]{20}'` empty).
-- [ ] Operator gets a Feishu DM summary.
+- [x] `scripts/dsh-superagent status` exits 0.
+- [x] `GET /orchestrator/api/state`: `setup.problem == null`, `setup.feishuProblem == null`, every `health` entry `ready`.
+- [x] `GET /orchestrator/api/settings`: `eval.model` and `executor.model` = `deepseek-official/deepseek-flash`; `eval.mode == observe`.
+- [x] GitHub Source `ready` and polling without error (intake proven only to this level; see D8).
+- [~] **Partially met (2026-11-05, `research/e2e.md`):** Ticket → running worker → sandbox worktree → threaded replies all observed; the GitHub write as `wankaiss` was not exercised (the request needed no code). E2E: an @bot message in the sandbox group from the operator's user identity becomes a Ticket that reaches a **running worker** (not just a Decision row), the worker gets a worktree of the sandbox repo, and the result lands on GitHub as `wankaiss` (branch, PR or issue comment) plus a threaded reply in the group.
+- [x] Main Session and worker Session records show `deepseek-flash` (or the `deepseek-v4-flash` alias that resolves to it).
+- [x] The `.artifacts/` startup log shows `[llm-deepseek-api-key] … loaded 2 model(s)` (key reached the tmux-launched process).
+- [x] No secret in any tracked file (`git grep -nE 'sk-[0-9a-f]{20}|ghp_[A-Za-z0-9]{20}'` empty).
+- [x] Operator gets a Feishu DM summary. (om_x100b61f621aeccb4cee37c2c0cadc6c, 2026-11-05, with key-rotation reminder)
 
 ## Out of scope
 

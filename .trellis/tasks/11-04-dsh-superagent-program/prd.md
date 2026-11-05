@@ -32,10 +32,10 @@ Turn the published dsh-superagent research prototype into something the operator
 ## Acceptance Criteria (cross-child)
 
 - [ ] Every child archived with its own acceptance criteria met.
-- [ ] Architecture doc references the running system's real behavior (from `local-run`), not only the article.
-- [ ] UI talks to the locally running prototype, not mock data only.
-- [ ] No secret (DeepSeek key, GitHub token, Feishu secret) appears in git history.
-- [ ] Operator received a Feishu update at each child's completion.
+- [x] Architecture doc references the running system's real behavior (from `local-run`), not only the article. (Post-E2E tag swap 2026-11-05.)
+- [x] UI talks to the locally running prototype, not mock data only. (Live smoke 98/98 incl. live Ticket/Thread pages.)
+- [x] No secret (DeepSeek key, GitHub token, Feishu secret) appears in git history. (`git grep` over all revisions: 0 hits.)
+- [x] Operator received a Feishu update at each child's completion.
 
 ## Status (2026-11-04)
 
@@ -45,3 +45,8 @@ Turn the published dsh-superagent research prototype into something the operator
 - `11-04-panel-ui`: done (2026-11-05). `panel/` console on the live API; Claude Design export; ChatGPT-reviewed prompts; Codex P1 + R1 + R2 (R2's one medium, Decisions paging, fixed after the cap and verified by fixture probe only); live smoke 81/81 incl. pause round-trip; Feishu DM sent. Ticket/Thread detail checked live against empty state only.
 - Committed on local branch `feat/local-run-and-panel-ui` (not pushed; operator decides).
 - **Archiving deferred, on purpose:** `lessons.md` and `spec/frontend/panel-console.md` reference files inside live task dirs (`11-04-article-capture/research/cdp-wechat.mjs`, `11-04-panel-ui/research/{design,probe}/`). After E2E: close local-run and architecture-doc, archive all four children in one pass, fix those paths in the same commit.
+
+## Status update (2026-11-05, after E2E run 1)
+
+- E2E run 1 (Feishu → Ticket → worker → threaded replies → ended completed) recorded in `11-04-local-run/research/e2e.md`. The GitHub write path is not yet exercised; local-run stays open for an optional run 2 (operator asks for a code change in one @-message).
+- Architecture-doc post-E2E follow-up done; article-capture, architecture-doc and panel-ui archived; path references updated in the same commit.
