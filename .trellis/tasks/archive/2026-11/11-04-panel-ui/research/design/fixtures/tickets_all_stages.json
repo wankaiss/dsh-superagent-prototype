@@ -1,0 +1,330 @@
+{
+  "items": [
+    {
+      "id": "5b152809246fd5a30659053091b02f45",
+      "title": "Add a CHANGELOG entry for the sum() fix",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/changelog-sum-fix-5b152809246f",
+      "createdAt": "2026-11-05T02:59:20.000Z",
+      "updatedAt": "2026-11-05T02:59:20.000Z",
+      "strength": "explicit",
+      "state": "open",
+      "stage": "working",
+      "action": "queued",
+      "actions": {
+        "retry": false,
+        "stop": true
+      },
+      "assignments": 1,
+      "inputs": 0,
+      "sessionId": "",
+      "summary": "",
+      "threads": [
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100be003ee53b6b012b516cfb956",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI add a CHANGELOG entry for the sum() fix.",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "dcd835558442310351e48f6ee6c8ca9b",
+      "title": "Add a CLI: python -m sandbox sum",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/add-cli-dcd835558442",
+      "createdAt": "2026-11-05T01:40:30.000Z",
+      "updatedAt": "2026-11-05T02:55:10.000Z",
+      "strength": "explicit",
+      "state": "open",
+      "stage": "working",
+      "actions": {
+        "retry": false,
+        "stop": true
+      },
+      "assignments": 1,
+      "inputs": 1,
+      "sessionId": "worker-dcd835558442310351e48f6ee6c8ca9b",
+      "summary": "The CLI parses argv and prints the sum; writing tests for the exit codes next.",
+      "threads": [
+        {
+          "key": "github:2",
+          "source": "github",
+          "title": "#2 Add a CLI",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/2",
+          "facts": {
+            "number": {
+              "value": "#2"
+            }
+          }
+        },
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100ba659b7e72454001edee5a2a3",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI please implement #2 Add a CLI: python -m sandbox sum 1 2 3 should pr",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "5204e964d95f2980681ae1324273317d",
+      "title": "Add type hints to stats.py and run mypy in CI",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/type-hints-5204e964d95f",
+      "createdAt": "2026-11-05T01:55:41.000Z",
+      "updatedAt": "2026-11-05T02:45:40.000Z",
+      "strength": "explicit",
+      "state": "open",
+      "stage": "idle",
+      "actions": {
+        "retry": false,
+        "stop": true
+      },
+      "assignments": 1,
+      "inputs": 1,
+      "sessionId": "worker-5204e964d95f2980681ae1324273317d",
+      "summary": "Opened PR #4 (https://github.com/wankaiss/dsh-superagent-sandbox/pull/4); waiting for CI to finish.",
+      "threads": [
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b88ce22bbef322a53cc70eb8f",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI add type hints to stats.py and run mypy in CI.",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        },
+        {
+          "key": "github:4",
+          "source": "github",
+          "title": "#4 Add type hints to stats.py and run mypy in CI",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/pull/4",
+          "facts": {
+            "number": {
+              "value": "#4"
+            },
+            "ci": {
+              "label": {
+                "zh": "CI 进行中",
+                "en": "CI running"
+              },
+              "value": "2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "494111129f662c07b81d267850f4c507",
+      "title": "Fix sum() for negative numbers",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/fix-sum-negatives-494111129f66",
+      "createdAt": "2026-11-05T01:10:31.000Z",
+      "updatedAt": "2026-11-05T02:24:31.000Z",
+      "strength": "explicit",
+      "state": "ended",
+      "stage": "ended",
+      "actions": {
+        "retry": false,
+        "stop": false
+      },
+      "ended": {
+        "at": "2026-11-05T02:24:30.000Z",
+        "by": "executor",
+        "outcome": "merged"
+      },
+      "assignments": 1,
+      "inputs": 3,
+      "sessionId": "worker-494111129f662c07b81d267850f4c507",
+      "summary": "Fixed sum() for negative numbers and empty lists, with tests; opened PR #3 (https://github.com/wankaiss/dsh-superagent-sandbox/pull/3).",
+      "threads": [
+        {
+          "key": "github:1",
+          "source": "github",
+          "title": "#1 sum() is wrong for negative numbers",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/1",
+          "facts": {
+            "number": {
+              "value": "#1"
+            }
+          }
+        },
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        },
+        {
+          "key": "github:3",
+          "source": "github",
+          "title": "#3 Fix sum() for negative numbers and empty lists",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/pull/3",
+          "facts": {
+            "number": {
+              "value": "#3"
+            },
+            "ci": {
+              "label": "CI",
+              "value": {
+                "zh": "通过",
+                "en": "passed"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "a208bbe09dd28ba8791b958aa5c35d7d",
+      "title": "Rename the package to dsh-sandbox-math",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/rename-package-a208bbe09dd2",
+      "createdAt": "2026-11-05T02:15:31.000Z",
+      "updatedAt": "2026-11-05T02:18:02.000Z",
+      "strength": "explicit",
+      "state": "open",
+      "stage": "person",
+      "action": "answer",
+      "note": {
+        "text": "Rename only the distribution name (dsh-sandbox-math), or also the import package sandbox? Renaming the import breaks existing \"import sandbox\" users.",
+        "error": false
+      },
+      "actions": {
+        "retry": false,
+        "stop": true
+      },
+      "attention": {
+        "id": "2c520e5533650d72d6d6df5fe5c4b090",
+        "question": "Rename only the distribution name (dsh-sandbox-math), or also the import package sandbox? Renaming the import breaks existing \"import sandbox\" users.",
+        "triggerId": "0d9f8d322f49c7f5da4fb79b5be20336"
+      },
+      "assignments": 1,
+      "inputs": 0,
+      "sessionId": "worker-a208bbe09dd28ba8791b958aa5c35d7d",
+      "summary": "Asked whether the import package should be renamed too.",
+      "threads": [
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b7a2ec8fa3a49d81a6a13fd29",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI rename the package to dsh-sandbox-math.",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        }
+      ],
+      "reply": {
+        "source": "feishu",
+        "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+        "label": {
+          "zh": "飞书消息",
+          "en": "Feishu message"
+        }
+      }
+    },
+    {
+      "id": "3cdab68cbd1df46204bd5b2df1d742fc",
+      "title": "Bump the CI workflow to Python 3.13",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/python-313-ci-3cdab68cbd1d",
+      "createdAt": "2026-11-05T02:05:18.000Z",
+      "updatedAt": "2026-11-05T02:12:40.000Z",
+      "strength": "explicit",
+      "state": "open",
+      "stage": "person",
+      "action": "blocked",
+      "note": {
+        "text": "Blocked: the lockfile was generated for Python 3.12.",
+        "error": false
+      },
+      "actions": {
+        "retry": true,
+        "stop": true
+      },
+      "assignments": 1,
+      "inputs": 0,
+      "sessionId": "worker-3cdab68cbd1df46204bd5b2df1d742fc",
+      "summary": "Blocked: the lockfile was generated for Python 3.12.\nThe workflow pins Python in the matrix and in the setup step. Should I regenerate the lockfile for 3.13, or keep 3.12 in the matrix next to 3.13?",
+      "threads": [
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100bee442e86bd6e065372ec3562",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI bump the GitHub Actions workflow to Python 3.13.",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        }
+      ],
+      "reply": {
+        "source": "feishu",
+        "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+        "label": {
+          "zh": "飞书消息",
+          "en": "Feishu message"
+        }
+      }
+    },
+    {
+      "id": "21c175de34152f1972e7cc43dbda022a",
+      "title": "Rewrite the README intro",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/readme-intro-21c175de3415",
+      "createdAt": "2026-11-05T01:20:22.000Z",
+      "updatedAt": "2026-11-05T01:26:53.000Z",
+      "strength": "explicit",
+      "state": "ended",
+      "stage": "ended",
+      "actions": {
+        "retry": false,
+        "stop": false
+      },
+      "ended": {
+        "at": "2026-11-05T01:26:52.000Z",
+        "by": "human",
+        "outcome": "stopped"
+      },
+      "assignments": 1,
+      "inputs": 0,
+      "sessionId": "worker-21c175de34152f1972e7cc43dbda022a",
+      "summary": "",
+      "threads": [
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b11beae71d207ddb24b01a1b4",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI rewrite the README intro so it says what the sandbox is for.",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "total": 7,
+  "next_offset": null
+}

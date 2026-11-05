@@ -1,0 +1,291 @@
+{
+  "id": "dcd835558442310351e48f6ee6c8ca9b",
+  "title": "Add a CLI: python -m sandbox sum",
+  "undelivered": 0,
+  "directory": "/home/gerald/.dsh/state/superagent/work/add-cli-dcd835558442",
+  "createdAt": "2026-11-05T01:40:30.000Z",
+  "updatedAt": "2026-11-05T02:55:10.000Z",
+  "strength": "explicit",
+  "state": "open",
+  "stage": "working",
+  "actions": {
+    "retry": false,
+    "stop": true
+  },
+  "assignments": [
+    {
+      "id": "b820acb462976a88c7ff859848dfd870",
+      "state": "running",
+      "createdAt": "2026-11-05T01:40:30.000Z",
+      "startedAt": "2026-11-05T01:40:41.000Z",
+      "deliveredAt": "2026-11-05T01:41:02.000Z",
+      "report": {
+        "state": "progress",
+        "summary": "The CLI parses argv and prints the sum; writing tests for the exit codes next.",
+        "at": "2026-11-05T02:55:10.000Z"
+      },
+      "ref": "worker-dcd835558442310351e48f6ee6c8ca9b"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "808956437f6e38857b492e6b7b500e02",
+      "kind": "note",
+      "at": "2026-11-05T01:41:00.000Z",
+      "delivered": true,
+      "text": "Issue #2 was opened by lin-qa; an earlier Eval ignored it because the CLI's commands were not specified. The operator has now specified them."
+    }
+  ],
+  "sessionId": "worker-dcd835558442310351e48f6ee6c8ca9b",
+  "summary": "The CLI parses argv and prints the sum; writing tests for the exit codes next.",
+  "threads": [
+    {
+      "key": "github:2",
+      "source": "github",
+      "title": "#2 Add a CLI",
+      "stage": "subscribed",
+      "latest": {
+        "actor": {
+          "source": "github",
+          "id": "lin-qa",
+          "name": {
+            "zh": "lin-qa",
+            "en": "lin-qa"
+          }
+        },
+        "human": true,
+        "at": "2026-11-05T01:30:15.000Z",
+        "preview": "Add a CLI @wankaiss it would be nice to have a CLI for this."
+      },
+      "lastAt": "2026-11-05T01:30:15.000Z",
+      "createdAt": "2026-11-05T01:30:15.000Z",
+      "subscriptions": 1,
+      "tickets": [
+        {
+          "id": "dcd835558442310351e48f6ee6c8ca9b",
+          "title": "Add a CLI: python -m sandbox sum",
+          "state": "open"
+        }
+      ],
+      "pending": 0,
+      "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/2",
+      "facts": {
+        "number": {
+          "value": "#2"
+        }
+      },
+      "context": true
+    },
+    {
+      "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100ba659b7e72454001edee5a2a3",
+      "source": "feishu",
+      "title": "@杨乾辉的飞书 CLI please implement #2 Add a CLI: python -m sandbox sum 1 2 3 should pr",
+      "stage": "subscribed",
+      "latest": {
+        "actor": {
+          "source": "feishu",
+          "id": "ou_6af531addda67d7c6839104657601f76",
+          "name": {
+            "zh": "杨乾辉 (operator)",
+            "en": "杨乾辉 (operator)"
+          }
+        },
+        "human": true,
+        "at": "2026-11-05T01:40:08.000Z",
+        "preview": "@杨乾辉的飞书 CLI please implement #2 Add a CLI: python -m sandbox sum 1 2 3 should print 6, and exit with code 2 when an argu"
+      },
+      "lastAt": "2026-11-05T01:40:08.000Z",
+      "createdAt": "2026-11-05T01:40:08.000Z",
+      "subscriptions": 1,
+      "tickets": [
+        {
+          "id": "dcd835558442310351e48f6ee6c8ca9b",
+          "title": "Add a CLI: python -m sandbox sum",
+          "state": "open"
+        }
+      ],
+      "pending": 0,
+      "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+      "facts": {
+        "chat": {
+          "value": "dsh-superagent sandbox"
+        }
+      }
+    }
+  ],
+  "mandate": {
+    "strength": "explicit",
+    "policyVersion": "b406b04a698a01418069ec76baa425e9",
+    "actor": {
+      "source": "feishu",
+      "id": "ou_6af531addda67d7c6839104657601f76",
+      "name": {
+        "zh": "杨乾辉 (operator)",
+        "en": "杨乾辉 (operator)"
+      }
+    },
+    "scope": "Add a python -m sandbox sum command to wankaiss/dsh-superagent-sandbox that prints the sum of its arguments and exits with code 2 on a non-number, with tests; open a pull request.",
+    "basis": {
+      "source": "feishu",
+      "scope": {
+        "chatId": "oc_37b3a567bce3a9e65953096b75696064",
+        "messageId": "om_x100ba659b7e72454001edee5a2a3",
+        "direct": false,
+        "mentioned": true
+      },
+      "row": "oc_37b3a567bce3a9e65953096b75696064",
+      "sender": "杨乾辉 (operator)",
+      "via": "addressed",
+      "addressed": "mention"
+    }
+  },
+  "basis": {
+    "facts": [
+      {
+        "name": "sender",
+        "value": "杨乾辉 (operator)"
+      },
+      {
+        "name": "addressed",
+        "value": "mention"
+      }
+    ],
+    "legacy": false
+  },
+  "paused": false,
+  "channels": [
+    {
+      "source": "feishu",
+      "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+      "label": {
+        "zh": "飞书消息",
+        "en": "Feishu message"
+      }
+    }
+  ],
+  "decision": {
+    "id": "21c0f593833083c7d99ba564211ec368",
+    "kind": "accept",
+    "outcome": "accept",
+    "reason": [
+      {
+        "code": "said",
+        "values": {
+          "text": "The operator asked to implement issue #2 with a concrete command and exit code."
+        }
+      }
+    ],
+    "at": "2026-11-05T01:40:30.000Z",
+    "strength": "explicit",
+    "ticketId": "dcd835558442310351e48f6ee6c8ca9b",
+    "triggerIds": [
+      "a921010b8f5ebacbd50ef2d515e47a8f"
+    ],
+    "thread": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100ba659b7e72454001edee5a2a3",
+    "rules": [],
+    "threadTitle": "@杨乾辉的飞书 CLI please implement #2 Add a CLI: python -m sandbox sum 1 2 3 should pr",
+    "preview": "@杨乾辉的飞书 CLI please implement #2 Add a CLI: python -m sandbox sum 1 2 3 should print 6, and exit with code 2 when an argument is not a number.",
+    "ticketTitle": "Add a CLI: python -m sandbox sum"
+  },
+  "environment": [
+    {
+      "key": "DSH_SUPERAGENT_DIR",
+      "value": "/home/gerald/.dsh/state/superagent/work/add-cli-dcd835558442",
+      "owner": "executor",
+      "description": {
+        "zh": "这个工单的执行目录；执行器 Session 在其中工作",
+        "en": "This ticket's directory; the executor Session works in it"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_NAME",
+      "value": "add-cli-dcd835558442",
+      "owner": "executor",
+      "description": {
+        "zh": "工单的短名，也是执行目录的名字",
+        "en": "The ticket's short name, also its directory's name"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_TICKET",
+      "value": "dcd835558442310351e48f6ee6c8ca9b",
+      "owner": "executor",
+      "description": {
+        "zh": "工单 id",
+        "en": "The ticket id"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_BLOCKED_COMMANDS",
+      "value": "",
+      "owner": "executor",
+      "description": {
+        "zh": "这个执行环境禁止调用的命令，以空格分隔；不要运行它们",
+        "en": "Commands blocked in this execution environment, separated by spaces; never run them"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_FEISHU_BOT",
+      "value": "杨乾辉的飞书 CLI",
+      "owner": "feishu",
+      "description": {
+        "zh": "飞书机器人；lark-cli 以它行事",
+        "en": "The Feishu bot; lark-cli acts as it"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_FEISHU_CHAT",
+      "value": "oc_37b3a567bce3a9e65953096b75696064",
+      "owner": "feishu",
+      "description": {
+        "zh": "接下工单的飞书群 chat_id；工单不是从飞书来的时为空",
+        "en": "chat_id of the Feishu chat that started the ticket; empty when the ticket did not start on Feishu"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_GITHUB_REPOSITORY",
+      "value": "wankaiss/dsh-superagent-sandbox",
+      "owner": "github",
+      "description": {
+        "zh": "这个来源监听的仓库，owner/name。智能体在这里开的 PR，分支最后一段是 DSH_SUPERAGENT_NAME 时（例如 agent/$DSH_SUPERAGENT_NAME）会关联到工单",
+        "en": "The repository this Source watches, as owner/name. A PR the agent opens here from a branch whose last path segment is DSH_SUPERAGENT_NAME (for example agent/$DSH_SUPERAGENT_NAME) binds to the ticket"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_GITHUB_ACCOUNT",
+      "value": "wankaiss",
+      "owner": "github",
+      "description": {
+        "zh": "智能体的 GitHub 账号；gh 以它登录，除自动合并外的 GitHub 操作都用 gh，不用其他账号或凭据",
+        "en": "The agent's GitHub account. gh is signed in to it; use gh for every GitHub operation except auto-merge, and never another account or credential"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_GITHUB_COMMIT_EMAIL",
+      "value": "00000000+wankaiss@users.noreply.github.com",
+      "owner": "github",
+      "description": {
+        "zh": "智能体账号的提交邮箱。这里的 git 没有身份：按提示词写明的作者提交，没有写明时用智能体账号和这个邮箱",
+        "en": "Commit email of the agent's account. git has no identity here: commit as the author these instructions name, or as the agent's account with this email when they name none"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_GITHUB_NUMBER",
+      "value": "",
+      "owner": "github",
+      "description": {
+        "zh": "接下工单的 Issue 或 PR 编号；工单不是从 GitHub 来的时为空",
+        "en": "Number of the Issue or PR that started the ticket; empty when the ticket did not start on GitHub"
+      }
+    },
+    {
+      "key": "DSH_SUPERAGENT_GITHUB_PR_HEAD",
+      "value": "",
+      "owner": "github",
+      "description": {
+        "zh": "接下工单的 PR 的 head 引用 refs/pull/<编号>/head；不是 PR 时为空",
+        "en": "Head ref refs/pull/<number>/head of the PR that started the ticket; empty when it was not a PR"
+      }
+    }
+  ]
+}

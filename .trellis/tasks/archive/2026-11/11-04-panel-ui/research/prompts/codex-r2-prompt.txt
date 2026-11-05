@@ -1,0 +1,13 @@
+Adversarial review round R2 (final round) of the Superagent Console in /home/gerald/workloads/dsh-superagent-prototype/panel. READ-ONLY: do not edit files; do not run unit tests; you may run `pnpm -C /home/gerald/workloads/dsh-superagent-prototype/panel typecheck` and GET-only curls through http://127.0.0.1:5178/orchestrator/api/... with header `x-orchestrator-request: 1`. Never POST/PUT.
+
+Round R1 findings and their claimed fixes:
+- R1 review text: scratch/panel-prompts/codex-r1.log (final "codex" block).
+- Fixes (per the implementer): 1) api/client.ts 5xx after a write => outcome-unconfirmed, confirm-action.tsx wording via copy.actions.unconfirmedServerBody; restarting (empty 404) => "Not run: dsh-superagent is restarting" (copy.actions.notRunTitle). 2) routes/thread.tsx remounts per Thread key so the `before` cursor resets. 3) api/queries.ts useTicketPages/useThreadPages page by next_offset with dedupe; tickets.tsx/threads.tsx use them. 4) routes/overview.tsx evaluating-Threads query has its own QueryView states, renders queued entries, discloses truncation linking /threads?filter=evaluating. 5) routes/ticket.tsx Model card wrapped in the settings QueryView; "DSH default" only after a successful read. 6) components/ui/alert-dialog.tsx + confirm-action.tsx: popup max-height = viewport − 2rem, scrollable body, footer always visible.
+Also a Sepia prose pass edited panel/src/copy.ts and panel/README.md.
+
+Tasks:
+A. For each of the six, verify the fix is correct and complete against the code (and the host contract in /home/gerald/workloads/dsh-superagent-prototype/src/app/http.ts, views/*.ts). Say FIXED / PARTIAL / NOT FIXED with file:line evidence.
+B. Look for regressions the fixes introduced (e.g. paging + polling interaction, duplicate keys, stale cache when filter changes, remount losing focus, query keys colliding with tab counts, error classification changes affecting the connection banner).
+C. Any remaining high or medium issue anywhere in panel/src you missed in R1 (keep false positives low; only report what you verified).
+
+Output: section A table, then numbered findings for B and C with severity, file:line, failure scenario, fix. End with a one-line verdict.

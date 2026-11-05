@@ -1,0 +1,232 @@
+{
+  "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94",
+  "source": "feishu",
+  "title": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues",
+  "stage": "dormant",
+  "latest": {
+    "actor": {
+      "source": "feishu",
+      "id": "ou_6af531addda67d7c6839104657601f76",
+      "name": {
+        "zh": "杨乾辉 (operator)",
+        "en": "杨乾辉 (operator)"
+      }
+    },
+    "human": true,
+    "at": "2026-11-05T02:22:15.000Z",
+    "preview": "LGTM, merging now."
+  },
+  "lastAt": "2026-11-05T02:22:15.000Z",
+  "createdAt": "2026-11-05T01:10:12.000Z",
+  "subscriptions": 1,
+  "tickets": [
+    {
+      "id": "494111129f662c07b81d267850f4c507",
+      "title": "Fix sum() for negative numbers",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/fix-sum-negatives-494111129f66",
+      "createdAt": "2026-11-05T01:10:31.000Z",
+      "updatedAt": "2026-11-05T02:24:31.000Z",
+      "strength": "explicit",
+      "state": "ended",
+      "stage": "ended",
+      "actions": {
+        "retry": false,
+        "stop": false
+      },
+      "ended": {
+        "at": "2026-11-05T02:24:30.000Z",
+        "by": "executor",
+        "outcome": "merged"
+      },
+      "assignments": 1,
+      "inputs": 3,
+      "sessionId": "worker-494111129f662c07b81d267850f4c507",
+      "summary": "Fixed sum() for negative numbers and empty lists, with tests; opened PR #3 (https://github.com/wankaiss/dsh-superagent-sandbox/pull/3).",
+      "threads": [
+        {
+          "key": "github:1",
+          "source": "github",
+          "title": "#1 sum() is wrong for negative numbers",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/1",
+          "facts": {
+            "number": {
+              "value": "#1"
+            }
+          }
+        },
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        },
+        {
+          "key": "github:3",
+          "source": "github",
+          "title": "#3 Fix sum() for negative numbers and empty lists",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/pull/3",
+          "facts": {
+            "number": {
+              "value": "#3"
+            },
+            "ci": {
+              "label": "CI",
+              "value": {
+                "zh": "通过",
+                "en": "passed"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "pending": 0,
+  "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+  "facts": {
+    "chat": {
+      "value": "dsh-superagent sandbox"
+    }
+  },
+  "context": [],
+  "correlated": [],
+  "decisions": [
+    {
+      "id": "33d1ff1d071b4dcde98059bb7fe6f6bf",
+      "kind": "accept",
+      "outcome": "accept",
+      "reason": [
+        {
+          "code": "said",
+          "values": {
+            "text": "The operator asked to fix issue #1 in the sandbox repository."
+          }
+        }
+      ],
+      "at": "2026-11-05T01:10:31.000Z",
+      "strength": "explicit",
+      "ticketId": "494111129f662c07b81d267850f4c507",
+      "triggerIds": [
+        "50da4d9c1f352f8caaffd654653e05ab"
+      ],
+      "thread": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94",
+      "rules": [],
+      "threadTitle": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues",
+      "preview": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues/1: sum() returns the wrong sign when the list has negative numbers.",
+      "ticketTitle": "Fix sum() for negative numbers"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "50da4d9c1f352f8caaffd654653e05ab",
+      "source": "feishu",
+      "actor": {
+        "source": "feishu",
+        "id": "ou_6af531addda67d7c6839104657601f76",
+        "name": {
+          "zh": "杨乾辉 (operator)",
+          "en": "杨乾辉 (operator)"
+        }
+      },
+      "human": true,
+      "at": "2026-11-05T01:10:12.000Z",
+      "text": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues/1: sum() returns the wrong sign when the list has negative numbers.",
+      "preview": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues/1: sum() returns the wrong sign when the list has negative numbers.",
+      "threads": [
+        "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94"
+      ],
+      "actions": {
+        "requeue": false
+      },
+      "disposition": {
+        "queued": false,
+        "evaluating": false,
+        "delivered": false,
+        "fanout": [],
+        "handbacks": [],
+        "decision": {
+          "id": "33d1ff1d071b4dcde98059bb7fe6f6bf",
+          "outcome": "accept",
+          "reason": [
+            {
+              "code": "said",
+              "values": {
+                "text": "The operator asked to fix issue #1 in the sandbox repository."
+              }
+            }
+          ],
+          "ticketId": "494111129f662c07b81d267850f4c507"
+        }
+      }
+    },
+    {
+      "id": "7e6b9bd8422514fcd9e00b64124dc58a",
+      "source": "feishu",
+      "actor": {
+        "source": "feishu",
+        "id": "ou_6af531addda67d7c6839104657601f76",
+        "name": {
+          "zh": "杨乾辉 (operator)",
+          "en": "杨乾辉 (operator)"
+        }
+      },
+      "human": true,
+      "at": "2026-11-05T01:48:30.000Z",
+      "text": "Please also add a test for sum([]) returning 0.",
+      "preview": "Please also add a test for sum([]) returning 0.",
+      "threads": [
+        "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94"
+      ],
+      "actions": {
+        "requeue": false
+      },
+      "disposition": {
+        "queued": false,
+        "evaluating": false,
+        "delivered": false,
+        "fanout": [
+          "494111129f662c07b81d267850f4c507"
+        ],
+        "handbacks": []
+      }
+    },
+    {
+      "id": "c470d9fb2f66501d75d1b5dcb140fc8e",
+      "source": "feishu",
+      "actor": {
+        "source": "feishu",
+        "id": "ou_6af531addda67d7c6839104657601f76",
+        "name": {
+          "zh": "杨乾辉 (operator)",
+          "en": "杨乾辉 (operator)"
+        }
+      },
+      "human": true,
+      "at": "2026-11-05T02:22:15.000Z",
+      "text": "LGTM, merging now.",
+      "preview": "LGTM, merging now.",
+      "threads": [
+        "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94"
+      ],
+      "actions": {
+        "requeue": false
+      },
+      "disposition": {
+        "queued": false,
+        "evaluating": false,
+        "delivered": false,
+        "fanout": [
+          "494111129f662c07b81d267850f4c507"
+        ],
+        "handbacks": []
+      }
+    }
+  ],
+  "earlier": null
+}

@@ -1,0 +1,230 @@
+{
+  "problems": [
+    {
+      "kind": "source-error",
+      "source": {
+        "id": "github",
+        "title": {
+          "zh": "GitHub",
+          "en": "GitHub"
+        },
+        "health": {
+          "name": "github",
+          "state": "error",
+          "detail": "3 polls failed in a row: gh api returned HTTP 502",
+          "at": "2026-11-05T03:01:04.000Z"
+        }
+      }
+    },
+    {
+      "kind": "eval-overdue",
+      "thread": {
+        "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b1f86116721a107ec594195e3",
+        "source": "feishu",
+        "title": "@杨乾辉的飞书 CLI also check that the docs for sum() mention negative numbers.",
+        "stage": "evaluating",
+        "latest": {
+          "actor": {
+            "source": "feishu",
+            "id": "ou_6af531addda67d7c6839104657601f76",
+            "name": {
+              "zh": "杨乾辉 (operator)",
+              "en": "杨乾辉 (operator)"
+            }
+          },
+          "human": true,
+          "at": "2026-11-05T02:58:30.000Z",
+          "preview": "@杨乾辉的飞书 CLI also check that the docs for sum() mention negative numbers."
+        },
+        "lastAt": "2026-11-05T02:58:30.000Z",
+        "createdAt": "2026-11-05T02:58:30.000Z",
+        "subscriptions": 0,
+        "tickets": [],
+        "evaluating": {
+          "id": "e4f4e885901c97b54017011ac61169d0",
+          "strength": "explicit",
+          "triggers": 1,
+          "startedAt": "2026-11-05T02:58:31.000Z",
+          "deadline": "2026-11-05T03:00:31.000Z"
+        },
+        "pending": 0,
+        "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+        "facts": {
+          "chat": {
+            "value": "dsh-superagent sandbox"
+          }
+        }
+      }
+    },
+    {
+      "kind": "eval-unavailable",
+      "decisionId": "68ac4d560ebc4fa64a103ac60a59b88c",
+      "thread": {
+        "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100bd724c3b3e513b4472ffce186",
+        "source": "feishu",
+        "title": "@杨乾辉的飞书 CLI can you look at the flaky test_parse in CI?",
+        "stage": "unsubscribed",
+        "latest": {
+          "actor": {
+            "source": "feishu",
+            "id": "ou_6af531addda67d7c6839104657601f76",
+            "name": {
+              "zh": "杨乾辉 (operator)",
+              "en": "杨乾辉 (operator)"
+            }
+          },
+          "human": true,
+          "at": "2026-11-05T02:40:02.000Z",
+          "preview": "@杨乾辉的飞书 CLI can you look at the flaky test_parse in CI?"
+        },
+        "lastAt": "2026-11-05T02:40:02.000Z",
+        "createdAt": "2026-11-05T02:40:02.000Z",
+        "subscriptions": 0,
+        "tickets": [],
+        "pending": 0,
+        "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+        "facts": {
+          "chat": {
+            "value": "dsh-superagent sandbox"
+          }
+        }
+      },
+      "reason": [
+        {
+          "code": "timeout"
+        }
+      ],
+      "triggerId": "cbec90fd51389ec48f08641f3c5d8f67"
+    },
+    {
+      "kind": "outgoing",
+      "outgoing": {
+        "id": "f34556747c0e85e6203eb3547c8af335",
+        "channel": {
+          "source": "feishu",
+          "thread": "feishu:oc_37b3a567bce3a9e65953096b75696064",
+          "address": {
+            "chatId": "oc_37b3a567bce3a9e65953096b75696064",
+            "messageId": "om_x100b7a2ec8fa3a49d81a6a13fd29"
+          }
+        },
+        "text": "Rename only the distribution name (dsh-sandbox-math), or also the import package sandbox? Renaming the import breaks existing \"import sandbox\" users.",
+        "attempts": 3,
+        "error": "lark-cli exited with code 1: request rate limited, retry later"
+      }
+    }
+  ],
+  "person": [
+    {
+      "id": "a208bbe09dd28ba8791b958aa5c35d7d",
+      "title": "Rename the package to dsh-sandbox-math",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/rename-package-a208bbe09dd2",
+      "createdAt": "2026-11-05T02:15:31.000Z",
+      "updatedAt": "2026-11-05T02:18:02.000Z",
+      "strength": "explicit",
+      "state": "open",
+      "stage": "person",
+      "action": "answer",
+      "note": {
+        "text": "Rename only the distribution name (dsh-sandbox-math), or also the import package sandbox? Renaming the import breaks existing \"import sandbox\" users.",
+        "error": false
+      },
+      "actions": {
+        "retry": false,
+        "stop": true
+      },
+      "attention": {
+        "id": "2c520e5533650d72d6d6df5fe5c4b090",
+        "question": "Rename only the distribution name (dsh-sandbox-math), or also the import package sandbox? Renaming the import breaks existing \"import sandbox\" users.",
+        "triggerId": "0d9f8d322f49c7f5da4fb79b5be20336"
+      },
+      "assignments": 1,
+      "inputs": 0,
+      "sessionId": "worker-a208bbe09dd28ba8791b958aa5c35d7d",
+      "summary": "Asked whether the import package should be renamed too.",
+      "threads": [
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b7a2ec8fa3a49d81a6a13fd29",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI rename the package to dsh-sandbox-math.",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        }
+      ],
+      "reply": {
+        "source": "feishu",
+        "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+        "label": {
+          "zh": "飞书消息",
+          "en": "Feishu message"
+        }
+      }
+    },
+    {
+      "id": "3cdab68cbd1df46204bd5b2df1d742fc",
+      "title": "Bump the CI workflow to Python 3.13",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/python-313-ci-3cdab68cbd1d",
+      "createdAt": "2026-11-05T02:05:18.000Z",
+      "updatedAt": "2026-11-05T02:12:40.000Z",
+      "strength": "explicit",
+      "state": "open",
+      "stage": "person",
+      "action": "blocked",
+      "note": {
+        "text": "Blocked: the lockfile was generated for Python 3.12.",
+        "error": false
+      },
+      "actions": {
+        "retry": true,
+        "stop": true
+      },
+      "assignments": 1,
+      "inputs": 0,
+      "sessionId": "worker-3cdab68cbd1df46204bd5b2df1d742fc",
+      "summary": "Blocked: the lockfile was generated for Python 3.12.\nThe workflow pins Python in the matrix and in the setup step. Should I regenerate the lockfile for 3.13, or keep 3.12 in the matrix next to 3.13?",
+      "threads": [
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100bee442e86bd6e065372ec3562",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI bump the GitHub Actions workflow to Python 3.13.",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        }
+      ],
+      "reply": {
+        "source": "feishu",
+        "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+        "label": {
+          "zh": "飞书消息",
+          "en": "Feishu message"
+        }
+      }
+    }
+  ],
+  "executor": {
+    "running": 1,
+    "queued": 1,
+    "maxWorkers": 3,
+    "idle": 1
+  },
+  "flow": {
+    "received": 19,
+    "filtered": 1,
+    "triggers": 18,
+    "judged": 13,
+    "accepted": 7,
+    "evaluating": 1,
+    "dropped": 1
+  },
+  "policyVersion": "b406b04a698a01418069ec76baa425e9"
+}

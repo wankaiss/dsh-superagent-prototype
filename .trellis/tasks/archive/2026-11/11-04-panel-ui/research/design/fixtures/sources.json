@@ -1,0 +1,98 @@
+[
+  {
+    "id": "feishu",
+    "title": {
+      "zh": "飞书",
+      "en": "Feishu"
+    },
+    "installed": true,
+    "enabled": true,
+    "state": "ready",
+    "health": [
+      {
+        "name": "feishu",
+        "state": "ready",
+        "detail": "Listening for bot events",
+        "at": "2026-11-04T13:03:19.533Z"
+      },
+      {
+        "name": "history",
+        "state": "ready",
+        "detail": "Configured groups and known direct chats recovered",
+        "at": "2026-11-05T02:58:42.000Z"
+      }
+    ],
+    "stats": {
+      "received": 13,
+      "filtered": 1,
+      "lastAt": "2026-11-05T02:59:05.000Z"
+    },
+    "filtered": [
+      {
+        "id": "1d0831820064b8089bf41f5bc73d07c7",
+        "at": "2026-11-05T02:10:30.000Z",
+        "actor": {
+          "source": "feishu",
+          "id": "ou_0000sample0000not0a0real0user00",
+          "name": {
+            "zh": "飞书用户",
+            "en": "Feishu user"
+          }
+        },
+        "preview": "@杨乾辉的飞书 CLI 帮我看一下这个报错",
+        "reason": {
+          "code": "chat_not_allowed"
+        }
+      }
+    ],
+    "dropped": [
+      {
+        "id": "cbb5be794c53790c5c4763f5b28dd706",
+        "kind": "reply",
+        "channel": {
+          "source": "feishu",
+          "thread": "feishu:oc_37b3a567bce3a9e65953096b75696064",
+          "address": {
+            "chatId": "oc_37b3a567bce3a9e65953096b75696064",
+            "messageId": "om_x100b213e28178a6f9cdfdd18ffbe"
+          }
+        },
+        "preview": "Stopped the README rewrite. Nothing was pushed.",
+        "dropped": {
+          "at": "2026-11-05T01:27:10.000Z",
+          "reason": "channelGone"
+        },
+        "ticket": {
+          "id": "21c175de34152f1972e7cc43dbda022a",
+          "title": "Rewrite the README intro"
+        },
+        "thread": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b11beae71d207ddb24b01a1b4"
+      }
+    ]
+  },
+  {
+    "id": "github",
+    "title": {
+      "zh": "GitHub",
+      "en": "GitHub"
+    },
+    "installed": true,
+    "enabled": true,
+    "state": "ready",
+    "health": [
+      {
+        "name": "github",
+        "state": "ready",
+        "detail": "0 notifications; next poll ≥ 60s",
+        "at": "2026-11-05T02:59:02.000Z"
+      }
+    ],
+    "stats": {
+      "received": 6,
+      "filtered": 0,
+      "lastAt": "2026-11-05T02:45:00.000Z"
+    },
+    "filtered": [],
+    "dropped": []
+  }
+]

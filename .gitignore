@@ -3,3 +3,8 @@ lib/
 .artifacts/
 .env
 coverage/
+
+# local-only
+scripts/__pycache__/
+# raw copies of third-party articles (copyright); kept locally, not versioned
+.trellis/tasks/*/research/raw/

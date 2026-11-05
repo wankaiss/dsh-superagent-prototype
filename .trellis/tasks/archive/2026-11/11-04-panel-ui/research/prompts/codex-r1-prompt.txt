@@ -1,0 +1,19 @@
+Adversarial review (round R1) of a generated result: a React console ("Superagent Console") in /home/gerald/workloads/dsh-superagent-prototype/panel. READ-ONLY: do not edit files; do not run unit tests. You may run read-only commands (cat, grep, `pnpm -C /home/gerald/workloads/dsh-superagent-prototype/panel typecheck`), and you may curl the live read-only API through the panel proxy (GET only, with header `x-orchestrator-request: 1`, at http://127.0.0.1:5178/orchestrator/api/...). Never send POST/PUT.
+
+What it must satisfy:
+- /home/gerald/workloads/dsh-superagent-prototype/.trellis/tasks/11-04-panel-ui/prd.md (requirements R1–R10, acceptance criteria) and grill.md (advisor verdicts).
+- The governing prompts: scratch/panel-prompts/panel-system.txt and panel-prompt.txt (Part B is the implementation brief; Part A defines screens/states).
+- The design export: /home/gerald/workloads/dsh-superagent-prototype/.trellis/tasks/11-04-panel-ui/research/design/superagent-console-ui.html (+ claude-design-report.md, contrast.md).
+- The API contract: /home/gerald/workloads/dsh-superagent-prototype/src/app/api.ts, src/app/http.ts, src/app/views/*.ts, src/core/stage.ts, src/app/settings.ts.
+Evidence already gathered: panel/.smoke/smoke.json (live smoke 81/81 incl. pause round-trip), panel/.smoke/design/*.png (fixture-rendered screenshots), panel/README.md.
+
+Try to break it. Focus on:
+1. Correctness against the real API: field names/semantics the UI reads (stage/action, actions.retry/stop/requeue, flow counters, health, sources state, decisions kinds and the Work=accept,reopen mapping, thread keys and cursors, search caps), wrong assumptions that would show false facts once real Tickets exist.
+2. Write safety: only the six allowed writes exist; each confirms first, no auto-retry, no duplicate submission, honest outcome after lost responses; pause semantics described correctly; nothing presented as a security boundary.
+3. Transport/security: vite.config.ts proxy + origin guard + cors:false; the client never relies on the proxy adding the header; no host code or fixtures in src/ or dist/ (check imports).
+4. Honesty/data rules from the SystemPrompt: no SAMPLE data in src, "—" for missing values, no programming values rendered, counts labelled with populations, stale vs empty vs error distinguished.
+5. Accessibility and responsive claims that the code plainly contradicts (focus handling in dialogs/sheet, colour-only status, keyboard reachability, page overflow at 390).
+6. Polling/perf issues that would hurt a long-running tab (unbounded growth, polling while hidden, refetch storms).
+7. Docs: README claims vs code.
+
+Output: numbered findings with severity (high/med/low), file:line, why it matters (concrete failure scenario), and a concrete fix. Verify each against the code; keep false positives low. End with a one-line verdict.

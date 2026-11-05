@@ -1,0 +1,5 @@
+{"file": ".trellis/spec/guides/lessons.md", "reason": "Verification policy (no unit tests) and env gotchas"}
+{"file": ".trellis/tasks/11-04-dsh-superagent-program/research/system-map.md", "reason": "Verified system map: config keys, API, local-run checklist, Codex findings"}
+{"file": "docs/006-deployment.md", "reason": "Install, machine config, settings, management API"}
+{"file": "SETUP.md", "reason": "Settings save order and defaults"}
+{"file": "examples/profile.cordis.patch.yml", "reason": "Machine patch template"}
