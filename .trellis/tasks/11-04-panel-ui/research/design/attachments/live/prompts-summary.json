@@ -1,0 +1,31 @@
+{
+ "masterId": "orchestrator-b8c705a6238d5dbb90a51de71ead218e",
+ "defaultChanged": [],
+ "revision": 1,
+ "notificationPending": false,
+ "next_offset": null,
+ "current": {
+  "revision": 1,
+  "savedAt": "2026-11-04T13:03:52.233Z"
+ },
+ "revisions": [
+  {
+   "revision": 1,
+   "previousRevision": 0,
+   "savedAt": "2026-11-04T13:03:52.233Z",
+   "source": "panel",
+   "changed": [
+    "delivery"
+   ]
+  },
+  {
+   "revision": 0,
+   "previousRevision": null,
+   "savedAt": "",
+   "source": "defaults",
+   "changed": []
+  }
+ ],
+ "sessions": [],
+ "_note": "Trimmed from live GET prompts (full body 77 KB of prompt text). System view shows only the current revision."
+}

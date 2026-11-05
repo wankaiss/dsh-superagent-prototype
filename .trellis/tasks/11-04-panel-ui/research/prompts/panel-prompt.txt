@@ -1,0 +1,350 @@
+PROMPT: Superagent Console
+
+Part A is for Claude Design. Part B is for Claude Code implementation agents.
+Both use the SystemPrompt and the shared completion criteria below.
+
+=====================================================================
+PART A: DESIGN BRIEF
+=====================================================================
+
+## A1. Deliverable
+
+Create one new, high-fidelity, self-contained HTML prototype titled "Superagent Console UI".
+
+The file contains:
+- Every screen in A3 as an identifiable specimen section with a unique id.
+- A specimen index at the top linking to every screen and state variant.
+- The token sheet from A5.
+- The component inventory from A6.
+- The closing report from A7.
+
+Use plain HTML and embedded CSS, system fonts and inline SVG where useful. No runtime framework, backend, external resources, external href/src destinations or network requests. Do not edit other project files.
+
+This is a static specimen document. Make index navigation and native disclosures work. Show search, mobile sheets, confirmation dialogs and asynchronous action states as explicitly labelled static specimens where their behaviour requires JavaScript. Specify their intended behaviour for Part B; do not claim that it works in Part A or assign false modal semantics to an inert illustration.
+
+Represent Thread, PR and DSH link-out controls visually without activating outbound navigation. Keep specimen annotations outside the simulated application content. Use unique IDs throughout the document, including labels and SVG references.
+
+## A2. Inputs
+
+Read and inventory these inputs:
+- api-digest.md: routes, response shapes, field meanings and stage rules; the design's API contract.
+- fixtures.json: SAMPLE responses for the console's GET routes, keyed by route; each payload is under `fixtures[route].response`, with provenance in `.about`. They describe one consistent story involving repository wankaiss/dsh-superagent-sandbox, Issues #1 and #2, PR #3, and Feishu group "dsh-superagent sandbox". Use supplied values and relationships verbatim; preserve variant labels.
+- live.json: captured responses of the real system, keyed by route; payloads are directly under `live[route]` (the prompts entry is trimmed and says so). Use these for the "today" specimens, labelled as snapshots.
+Cite bundle filename, route key and JSON path in the report.
+- ui-ideas.md: 22 ideas; v1 covers 1, 2, 5, 10, 14, 16, 17, 19 and 20, only to the extent specified. The remaining ideas are out of scope.
+
+If an input is missing, incompatible or for another product, report it. Continue the supported layout work, retaining the requested sections with neutral placeholders where necessary. Do not fabricate fixtures, response fields, host messages or action effects to complete a specimen.
+
+The brief says the system currently has no Tickets, Threads or Decisions. That does not establish Source health, event counts, worker capacity or the current Eval mode; check the corresponding captured responses.
+
+## A3. Screens and specimens
+
+Shared application shell:
+- Left sidebar: Overview, Tickets, Threads, Decisions, Sources, System.
+- Sidebar badges only for evidenced work waiting on a person; omit zero badges. This restriction does not remove the required counts in list-filter tabs.
+- Top bar: connection indicator, executor pause switch, search trigger and the theme control specified in Part B.
+- Search shortcut: ⌘K on macOS and Ctrl+K elsewhere, with a visible button in all cases.
+- At 390 px, the sidebar becomes a sheet behind a menu button. Show its closed and open states and specify focus behaviour.
+- Connection status describes API reachability; Source health and Executor state remain separate facts.
+
+Preserve all fourteen specimens:
+
+1. Overview, today — captured live, empty.
+   Keep the page calm. The requested baseline is "All systems ready", 0 running and 0 queued of 3 maximum workers, and zero 24-hour flow counters. Show those values only when the corresponding snapshots support them; otherwise show the supplied values or "—" and report the discrepancy.
+   Collapse healthy detail to one line with a disclosure only when the aggregate health supports it.
+   Explain how a Ticket can originate: mention the bot in the configured Feishu group, or an allowed GitHub user mentions the agent. Reflect configuration and Eval mode: observe records Decisions without automatically creating work.
+
+2. Overview, busy — SAMPLE.
+   Order content as: "Needs you" (person-stage Tickets and overview problems), working activity, flow funnel, then "Noticed but stayed quiet".
+   Preserve the named flow counters: received, filtered, triggers, judged, accepted, plus dropped. Show them as separate labelled counts, not a conversion funnel: `triggers = received − filtered`; `judged` counts distinct non-filtered Triggers in the window that have Decisions; `accepted` counts distinct accept/reopen Decisions associated with Triggers in that window. These are different populations. Do not infer rates or acted-on totals.
+   Keep ignore and would-accept counts distinct from acted-on work, with their populations and windows identified.
+
+3. Overview, problem states.
+   Show separate variants for an unreachable service, restarting indicated by the documented empty-body 404, a setup problem with the host's message, Executor paused with Resume, and eval-overdue.
+   These are state specimens, not assertions that the live system has those problems. Use supplied response examples for host-specific details. Do not describe a failed fetch as proof of a particular server failure.
+
+4. Tickets list.
+   Tabs: Open, Pending, Working, Waiting for a Trigger, Ended, with evidenced counts.
+   Rows: title, origin Source and Thread, stage badge and reason/action such as answer, review or blocked, asker, age, last activity.
+   Provide an empty state for each tab. Distinguish an empty system from no matches in the selected filter. Do not infer full totals from a partial response.
+
+5. Ticket detail, working — SAMPLE.
+   Header: title, stage, Source, asker and Mandate, including the Policy rule and authorised work.
+   Timeline: Triggers, worker reports and replies; distinguish confirmed delivery to people, internal traffic and inputs not yet delivered using actual contract fields.
+   Side panel: followed Threads, PR link, environment including ticket directory and worktree branch, and model.
+   Actions: Stop with confirmation; Open Session in DSH as a link out.
+   Show unavailable fields honestly; do not invent delivery evidence, authorisation details or Session URLs.
+
+6. Ticket detail, waiting on a person — SAMPLE.
+   Make the worker's actual question prominent and identify the Thread where the answer belongs.
+   Keep answering in that Thread; do not add an in-console reply action.
+   Show Retry with confirmation when the supplied response has `actions.retry: true`.
+
+7. Ticket detail, ended — SAMPLE.
+   Show the supplied outcome and reason. Show a merged PR only when recorded.
+   Show the recorded outcome and reason without Retry: ended Tickets are not retryable. Part B uses `actions.retry` and `actions.stop` for eligibility.
+
+8. Threads list and Thread detail — SAMPLE.
+   Tabs: Subscribed, Evaluating, Recent, All.
+   Detail: Trigger timeline with each Decision or disposition and linked Tickets.
+   Actions: Unsubscribe with confirmation; Requeue on an eligible Trigger with confirmation.
+
+9. Decisions — SAMPLE.
+   Filters: Work, Stop, Ignore, Unavailable, All; last 24 hours.
+   Each row: Trigger excerpt, actor, kind, rule, reason, Thread link and Dismiss.
+   Derive filter-to-enum mapping and time-window semantics from the contract. Dismiss follows the shared confirmation lifecycle.
+
+10. Sources — captured live.
+    Feishu and GitHub cards show state, health parts with their recorded times, received/filtered counts, and filtered/dropped lists.
+    Use the real captured values. Show empty lists only where the response establishes them.
+
+11. System — captured live.
+    Show the context boundary: stateDir; accounts including repository, agent login and Feishu bot; Sources and allow-lists; Eval and Executor models side by side; Eval mode; policy version and history; current prompt revision.
+    Show observe only if the response says observe.
+    All configuration is read-only, with "Edit in DSH panel" link treatments.
+    Include exactly: "Workers run as your OS user; controls here are conveniences, not a security boundary."
+
+12. ⌘K search — SAMPLE, query "sum".
+    Search covers Tickets, Triggers and Threads as supported by the documented API.
+    Use supplied matching records only. Include loading, no-results and error treatments.
+    The endpoint is `GET search?q` (at most 10 Tickets and 20 Triggers, plus Threads). Do not imply exhaustive results beyond those caps.
+    Results lead to existing supported routes or their owning records, not a new Trigger-detail route.
+
+13. Stop Ticket confirmation.
+    Identify the Ticket, the documented effect and any documented irreversible consequences.
+    Show confirmation, pending, host-confirmed success and error variants. Use supplied host responses; where absent, illustrate the response container with a clearly identified missing-response annotation.
+    Do not invent rollback, immediate termination or reversal guarantees.
+
+14. Mobile, 390 px.
+    Show Overview busy and Ticket detail working using the same SAMPLE records as their desktop counterparts.
+    Preserve information and actions. Stack panels, wrap long content and contain table overflow. Keep the sheet and dialogs within the viewport.
+
+Account for loading, successful-empty, initial-error and stale-after-refresh-error states throughout the inventory and representative specimens. An initial error must not look empty; a background refresh must not erase usable content.
+
+## A4. Visual direction
+
+Use a current shadcn/ui idiom compatible with Tailwind 4:
+- Neutral zinc-like surfaces and one calm accent; justify the accent in one sentence.
+- 8 px base radius, 1 px borders, subtle shadows only on overlays.
+- Inter-like system sans, tabular numerals for numbers, monospace for IDs and technical paths.
+- Status roles: ready/ok, working/info, waiting-on-person/warning, error/danger, ended/idle/muted.
+- Every status also has text or a meaningful icon.
+- Motion is optional; if present, keep it at or below 150 ms and respect reduced motion.
+
+Use a clear primary action and quiet secondary controls. Keep normal health and empty states compact without hiding uncertainty or errors.
+
+## A5. Token sheet
+
+Define light and dark CSS custom properties using shadcn-compatible semantic names:
+
+--background, --foreground,
+--card, --card-foreground,
+--popover, --popover-foreground,
+--primary, --primary-foreground,
+--secondary, --secondary-foreground,
+--muted, --muted-foreground,
+--accent, --accent-foreground,
+--destructive, --border, --input, --ring, --radius,
+--sidebar, --sidebar-foreground,
+--sidebar-primary, --sidebar-primary-foreground,
+--sidebar-accent, --sidebar-accent-foreground,
+--sidebar-border, --sidebar-ring.
+
+Also define --status-ok, --status-info, --status-warn, --status-danger and --status-idle, each with -foreground and -subtle variants.
+
+Use oklch() for colour values; use an appropriate CSS length for --radius. Keep the same semantic names in both themes and document intended foreground/background pairings.
+
+For every pairing used, report the measured contrast ratio, theme, intended use, measurement method and pass/fail. Include muted text, status text on subtle backgrounds, buttons, inputs and focus indicators. Contrast is measured between rendered colours, including compositing, not from differences in OKLCH lightness. Non-colour tokens have no contrast ratio.
+
+If measurement is unavailable, mark the affected pairs "Not verified"; do not fabricate results or claim AA compliance.
+
+## A6. Component inventory
+
+Provide a table:
+component → shadcn primitive(s) or native element → props/variants → states and keyboard/focus behaviour → where used.
+
+Available primitive vocabulary:
+button, badge, card, tabs, table, dialog, alert-dialog, command, tooltip, skeleton, sonner, switch, separator, scroll-area, sheet, dropdown-menu, input.
+
+Include:
+AppShell, ConnectionBanner, HealthBoard, LoadMeter, FlowFunnel, StageBadge, TicketRow, Timeline with contract-supported item kinds, EmptyState, ConfirmAction, StaleMarker and KeyValueList.
+
+Specify:
+- Normal, loading, empty, error, stale, disabled and pending treatments where applicable.
+- Mobile behaviour and handling of long content.
+- Accessible names, tab order, modal focus entry/containment/return and keyboard commands.
+- Which behaviours are illustrated statically and which must be implemented in Part B.
+- The semantic tokens used by each composition.
+
+Do not claim that a design prop or illustrated interaction is an installed library API.
+
+## A7. Closing report
+
+Include:
+- Coverage of all fourteen specimens and their section IDs.
+- Source mapping for displayed facts: fixture or snapshot filename and relevant JSON field/path.
+- Every SAMPLE location and any supplied SAMPLE value that could not be placed; do not force irrelevant fields into the UI.
+- Missing or incompatible inputs, contract gaps and departures from this brief.
+- Checks performed and results, including widths, themes, document navigation and contrast.
+- Behaviours and accessibility requirements not verified by this static prototype.
+
+Keep source-tracing detail in this report rather than cluttering the application specimens.
+
+=====================================================================
+PART B: IMPLEMENTATION BRIEF
+=====================================================================
+
+## B1. Scope and boundaries
+
+Build the console in panel/.
+
+The supplied scaffold is Vite 8, React 19, strict TypeScript, Tailwind 4, shadcn/ui on Base UI, TanStack Query and TanStack Router, with a proxy and Origin guard in vite.config.ts. Inspect the actual scaffold and installed APIs before implementing; report material differences.
+
+You may read host files to understand the contract. Change nothing outside panel/. Preserve the proxy, Origin guard and loopback restrictions.
+
+Use installed dependencies first. Add no dependency beyond those installed unless you state why it is necessary. A dependency change does not permit modifying a root lockfile or another file outside panel/; report that constraint if it blocks the change.
+
+Use shared API, route, query-key, token and copy definitions across implementation agents so screens do not independently redefine the same behaviour.
+
+## B2. Contract and caller
+
+Import host API types only with import type from ../../src/app/api.ts, at a panel/src/ boundary where that exact relative path resolves correctly. Deeper modules consume the local adapter/types.
+
+The only permitted host value imports are TICKET_FILTERS and THREAD_FILTERS from that API module. Never import another host runtime module.
+
+Implement a typed call(route, request) modelled on src/client/api.ts:
+- Use only methods, routes, request shapes and response types present in the contract.
+- Send x-orchestrator-request: 1 on every management API request.
+- Preserve the host's message, code and validation details as appropriate.
+- Classify failures as offline for a rejected fetch, restarting for the documented empty-body 404, setup for the documented setup envelope, user error for code, validation for issues, or status error.
+- Follow the existing caller's discrimination and precedence where shapes overlap.
+- Treat intentional cancellation separately from offline failure.
+- Handle malformed or unexpected bodies explicitly; never convert them to a successful empty response.
+- Distinguish an ordinary missing resource from the specific restarting response.
+
+Resolve discrepancies between the digest and source contract in the report. Do not invent compatibility routes, weaken types or manufacture successful data to hide a mismatch.
+
+## B3. Data, polling and freshness
+
+Use TanStack Query hooks per route with query keys covering the route, record identity and all request/filter parameters.
+
+Preserve these polling intervals:
+- State and overview: 3 seconds.
+- Lists: 5 seconds.
+- A working Ticket's detail: 2 seconds.
+
+Determine working status from the response and re-evaluate its interval as status changes. Use documented or existing behaviour for other reads and report any unresolved freshness policy.
+
+Start no interval polling while the tab is hidden; refetch active data on focus. Avoid duplicate polling timers outside the shared query layer.
+
+For a background refresh failure:
+- Retain the last successful data for that same query identity.
+- Show a scoped stale marker, last successful fetch time and the current error.
+- Distinguish the fetch time from the record's own last-activity timestamp.
+- Clear the failure marker after a successful refresh.
+
+Do not show another Ticket, Thread, filter or search query's cached result as the current selection. Do not replace existing content with a skeleton during an ordinary background refresh.
+
+The user-facing stale marker represents a refresh/freshness problem, not TanStack Query's isStale flag by itself. Loading, initial failure, successful empty response and stale retained data are separate UI states.
+
+No fixtures or SAMPLE data anywhere in src/. Do not import them from elsewhere into the production bundle, use them as API fallbacks, or seed the live service to make a screen look populated.
+
+## B4. Routes and navigation
+
+Use a code-based TanStack Router tree with exactly these product routes:
+- /
+- /tickets, with search parameter state
+- /tickets/$id
+- /threads, with search parameter filter
+- /threads/$key
+- /decisions, with search parameter kind
+- /sources
+- /system
+
+Validate search parameters against supported values and preserve filters through navigation and browser history. Use the contract's filter keys rather than sending display labels as request values. Handle IDs and Thread keys through the router's parameter encoding.
+
+⌘K/Ctrl+K opens search from anywhere, with a visible trigger and accessible modal behaviour. It is an overlay, not a new product route.
+
+Implement search through `GET search?q` only (capped at 10 Tickets and 20 Triggers); say so in the results rather than implying exhaustive search.
+
+Use API-provided URLs for Thread and PR links. The approved DSH destination is `http://127.0.0.1:3082/`; label it "Open DSH UI" and display the Session ID where available. Do not invent a Session deep-link template. Part A illustrates this control without outbound navigation; Part B activates the link.
+
+## B5. Permitted writes
+
+Only these management writes are allowed:
+- Executor pause/resume through POST executor/pause.
+- Ticket stop.
+- Ticket retry.
+- Trigger requeue.
+- Decision dismiss.
+- Thread unsubscribe.
+
+The management API prefix remains /orchestrator/api/*. Obtain the exact methods, route keys, payloads and eligibility from the contract (`src/app/api.ts`; `actions.retry`, `actions.stop`, `actions.requeue` in the views). Pause suspends new evaluations, worker dispatch and channel delivery while Sources continue recording Triggers (verify against `src/app/settings.ts`); it does not terminate running Workers. The operation names above do not authorise invented endpoint paths.
+
+Every write follows:
+confirmation stating target and documented effect → pending state → toast with the host-confirmed result or error → invalidate affected queries.
+
+Apply these rules consistently:
+- The Executor switch opens confirmation before sending; cancelling preserves its current state.
+- Explain documented consequences, without claiming that pause stops existing Workers or that Stop reverses previous effects unless the contract says so.
+- Prevent duplicate submissions and automatic mutation retries.
+- Base eligibility on documented rules and usable current data. Explain disabled actions when eligibility cannot be established.
+- Show pending state without prematurely changing stages, totals or pause status.
+- Do not equate request acceptance with completed work.
+- Preserve actionable errors in context as well as in the toast.
+- After a lost response, say the outcome is unconfirmed; do not claim nothing changed. Refetch relevant existing GETs, but claim success only when their evidence actually establishes the result of the action.
+- Dismissing a dialog does not imply cancellation of an already-sent request.
+
+Keep settings and prompt editing out of this console. Theme switching is presentation behaviour and does not call a settings API.
+
+## B6. Design fidelity and copy
+
+Apply the Claude Design export:
+- Put its semantic light/dark tokens into src/index.css as shadcn variables, using the scaffold's Tailwind 4 mapping.
+- Build layouts and application compositions from the primitives in src/components/ui.
+- Use the actual Base UI-backed component APIs; do not mix in incompatible examples from another primitive implementation.
+- Keep all application-authored user-facing strings in src/copy.ts, including accessible labels, empty states, confirmations and notification templates. API-provided content remains data and keeps its provenance.
+- Preserve the existing `next-themes` provider with `attribute="class"`, system default and system detection enabled. Apply dark tokens through `.dark` on `<html>` and use the same provider for the manual theme control.
+- Implement the SystemPrompt's keyboard, contrast, focus and responsive requirements.
+
+Translate the prototype into live components. Its specimen index, SAMPLE stories, token sheet, inventory and report are design-only material, not production screens.
+
+If the export is absent or violates the contract or accessibility requirements, implement the supported brief and report the limitation or correction. Do not claim fidelity to an export you did not inspect.
+
+## B7. Verification — no unit tests
+
+Run:
+1. pnpm -C panel typecheck
+2. pnpm -C panel build, including the existing dist check
+3. `pnpm -C panel smoke --pause-roundtrip` against `vite preview` and the live service. The script itself checks, immediately before mutating, zero running and queued work, no open or ended Tickets and an initially unpaused state; it verifies pause on through `GET state` and restores it immediately. If prerequisites fail it reports the round-trip as skipped. This API round-trip does not verify the UI confirmation flow.
+
+Locate and inspect the smoke script rather than inventing its name or claiming it ran. Verify that preview can reach the API while preserving the intended proxy/Origin/loopback behaviour. Report absent scripts, missing checks, unavailable tools or an unreachable service.
+
+Do not write or run unit tests, including indirectly through a broader test command.
+
+Within available integration/smoke and browser checks, verify:
+- Existing product routes, direct navigation and filter behaviour.
+- Actual live empty states and available populated states.
+- Error classification, retained-data behaviour and absence of SAMPLE fallback.
+- Desktop and 390 px layouts, light and dark, and long content.
+- Keyboard navigation, search, sheet and dialog focus behaviour.
+- Contrast pairs, text resizing and reflow; include 320 CSS px reflow when assessing WCAG AA.
+- The scope of each mutation flow actually exercised.
+
+Inspect smoke actions before running them. Do not alter live work merely to manufacture specimen coverage. Use an established isolated verification context where available; otherwise report unexercised writes and states.
+
+Report exact commands or manual procedures, observed results and remaining limitations. A successful build does not establish API correctness, accessibility or successful writes.
+
+=====================================================================
+SHARED: COMPLETION CRITERIA
+=====================================================================
+
+- All fourteen A3 specimens are accounted for in Part A.
+- Part B implements the listed product routes and their corresponding conditional states against the live contract; it does not ship a specimen catalogue or force SAMPLE scenarios into the system.
+- Domain vocabulary, paths, route list, write whitelist, read-only settings/prompt scope and the no-unit-tests rule are preserved.
+- Loading, empty, error and stale states are explicit and consistent.
+- Every displayed fact has a valid source; unknown values do not become zero, healthy, delivered, successful or retryable by assumption.
+- Every permitted write uses the same confirmation, pending, result and invalidation lifecycle.
+- SAMPLE data, recorded snapshots and live responses remain distinguishable.
+- Controls are never presented as a security boundary.
+- Required verification is reported honestly. Missing evidence or failed checks remain visible limitations, not completed acceptance criteria.

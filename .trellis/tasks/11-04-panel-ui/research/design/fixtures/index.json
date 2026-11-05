@@ -1,0 +1,86 @@
+{
+  "_note": "SAMPLE data for design only; not served by the app",
+  "prefix": "/orchestrator/api/",
+  "routes": {
+    "GET state": {
+      "route": "GET state",
+      "file": "state.json",
+      "about": "Setup, accounts, executor load and health board (live values, load updated to the sample story)."
+    },
+    "GET overview": {
+      "route": "GET overview",
+      "file": "overview.json",
+      "about": "Overview with no problems: two Tickets waiting on a person, load, 24 h flow."
+    },
+    "GET overview (variant)": {
+      "route": "GET overview",
+      "file": "overview_with_problems.json",
+      "about": "Same overview with every problem card this story can produce: source error, overdue Eval, unavailable Eval, failing reply."
+    },
+    "GET sources": {
+      "route": "GET sources",
+      "file": "sources.json",
+      "about": "Feishu and GitHub Source status, 24 h counts, one filtered message and one dropped reply."
+    },
+    "GET settings": {
+      "route": "GET settings",
+      "file": "settings.json",
+      "about": "Live settings snapshot, unchanged (read-only in the panel)."
+    },
+    "GET threads?filter=all": {
+      "route": "GET threads",
+      "file": "threads_filter_all.json",
+      "about": "Every Thread, newest activity first, in every Thread stage."
+    },
+    "GET threads/github:1": {
+      "route": "GET threads/:key",
+      "file": "threads_github-1.json",
+      "about": "GitHub issue #1: two messages batched into one ignored Eval; a Ticket followed it later for context."
+    },
+    "GET threads/feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94": {
+      "route": "GET threads/:key",
+      "file": "threads_feishu-topic-a.json",
+      "about": "Feishu topic of the merged Ticket: the request and two follow-ups."
+    },
+    "GET decisions?window=24h": {
+      "route": "GET decisions",
+      "file": "decisions_window_24h.json",
+      "about": "Eval audit, newest first: accept, ignore, would-accept (observe mode), stop and unavailable."
+    },
+    "GET tickets (all stages)": {
+      "route": "GET tickets",
+      "file": "tickets_all_stages.json",
+      "about": "One Ticket per stage side by side. The host never returns this exact list: `open` excludes ended Tickets."
+    },
+    "GET tickets/dcd835558442310351e48f6ee6c8ca9b": {
+      "route": "GET tickets/:id",
+      "file": "tickets_working.json",
+      "about": "Ticket in a worker turn (stage working)."
+    },
+    "GET tickets/3cdab68cbd1df46204bd5b2df1d742fc": {
+      "route": "GET tickets/:id",
+      "file": "tickets_waiting.json",
+      "about": "Ticket waiting on a person: its worker reported blocked with a question; Retry is offered."
+    },
+    "GET tickets/494111129f662c07b81d267850f4c507": {
+      "route": "GET tickets/:id",
+      "file": "tickets_ended_merged.json",
+      "about": "Ended Ticket whose pull request merged."
+    },
+    "GET policy/history": {
+      "route": "GET policy/history",
+      "file": "policy_history.json",
+      "about": "Live settings history, unchanged."
+    },
+    "GET search?q=sum": {
+      "route": "GET search",
+      "file": "search_sum.json",
+      "about": "Search for \"sum\": matching Tickets and messages."
+    },
+    "GET models": {
+      "route": "GET models",
+      "file": "models.json",
+      "about": "Live model catalog, unchanged."
+    }
+  }
+}

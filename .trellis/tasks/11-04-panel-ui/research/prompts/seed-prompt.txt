@@ -1,0 +1,102 @@
+PROMPT: Superagent Console
+
+Part A is for the designer (Claude Design). Part B is for the implementation agents (Claude Code). Both share the SystemPrompt and the shared sections at the end.
+
+=====================================================================
+PART A: DESIGN BRIEF
+=====================================================================
+
+## A1. Deliverable
+
+One new, high-fidelity, self-contained HTML prototype titled "Superagent Console UI":
+- plain HTML and CSS, no external URLs or resources (system font stack is fine), no runtime framework;
+- every screen in §A3 as a specimen section with an id, plus a specimen index at the top linking to each;
+- a token sheet (§A5) and a component inventory (§A6) as sections of the same file;
+- a closing report section (§A7).
+
+Do not build a backend. Do not edit other project files.
+
+## A2. Attachments
+
+- `api-digest.md`: the routes, response shapes and stage rules (authority for data shapes).
+- `fixtures/*.json`: SAMPLE responses for every GET route the console uses, telling one consistent story (sandbox repo `wankaiss/dsh-superagent-sandbox`, issues #1 and #2, PR #3, Feishu group "dsh-superagent sandbox"). Use their values verbatim. Mark populated specimens "SAMPLE".
+- `live/*.json`: the real responses of today's empty system. Use these for the "today" specimens.
+- `ui-ideas.md`: 22 UI ideas from the source article; v1 covers ideas 1, 2, 5, 10, 14, 16, 17, 19 and 20 (some partially, as noted); the rest are out of scope.
+
+If an attachment is missing, say so in the report and design from this brief.
+
+## A3. Screens (specimens)
+
+Application shell on every screen: left sidebar (Overview, Tickets, Threads, Decisions, Sources, System) with counts only where something waits on a person; top bar with a connection indicator, the executor pause switch and a ⌘K search trigger. At 390 px the sidebar becomes a sheet behind a menu button.
+
+1. **Overview, today (live, empty).** Calm. Health board collapses to one "All systems ready" line with a disclosure for the parts. Load 0/0 of 3 workers. 24 h flow funnel all zeros, stated plainly. A first-run hint: how a Ticket gets created (mention the bot in the Feishu group, or an allowed GitHub user mentions the agent).
+2. **Overview, busy (SAMPLE).** "Needs you" list first (Tickets in stage person, overview problems), then what is working, then the flow funnel (received → filtered → triggers → judged → accepted, plus dropped) and "Noticed but stayed quiet" (ignore and would-accept counts against acted-on).
+3. **Overview, problem states.** Banners: service down (cannot reach the host), restarting (empty 404), setup problem (host's message), executor paused (with resume), and one overview problem (eval-overdue).
+4. **Tickets list.** Tabs Open, Pending, Working, Waiting for a Trigger, Ended, with counts. Rows: title, origin Source and Thread, stage badge with its action (answer, review, blocked…), asker, age, last activity. Empty state per tab.
+5. **Ticket detail, working (SAMPLE).** Header with title, stage, Source, asker, Mandate (rule and what was authorised). Timeline of Triggers, worker reports and replies, marking what reached people versus internal traffic, and inputs not yet delivered. Side panel: Threads it follows, PR link, environment (ticket dir, worktree branch), model. Actions: Stop (confirm), Open Session in DSH (link out).
+6. **Ticket detail, waiting on a person (SAMPLE).** The question the worker asked, prominent; where the answer should go (the Thread link).
+7. **Ticket detail, ended (SAMPLE).** Outcome and reason, merged PR, Retry (confirm) when retryable.
+8. **Threads list and Thread detail (SAMPLE).** Filter tabs Subscribed, Evaluating, Recent, All. Detail: timeline of Triggers with their Decision or disposition, linked Tickets, Unsubscribe (confirm), Requeue on a Trigger (confirm).
+9. **Decisions (SAMPLE).** Filters Work, Stop, Ignore, Unavailable, All; last 24 h. Each row: Trigger excerpt, actor, kind, rule, reason, Thread link, Dismiss.
+10. **Sources (live).** Feishu and GitHub cards: state, health parts with time, received/filtered counts, filtered and dropped lists (empty today).
+11. **System (live).** Context boundary: stateDir, accounts (repository, agent login, Feishu bot), Sources with allow-lists, Eval and Executor models side by side, Eval mode (observe), policy version and history, current prompt revision. Read-only with "Edit in DSH panel" links. A plain statement: "Workers run as your OS user; controls here are conveniences, not a security boundary."
+12. **⌘K search** over Tickets, Triggers and Threads (SAMPLE, query "sum").
+13. **Confirm dialog** for Stop Ticket: what will happen, irreversible parts, the host's answer after confirming (success and error variants).
+14. **Mobile 390 px:** Overview busy and Ticket detail working.
+
+## A4. Visual direction
+
+Current shadcn/ui idiom on Tailwind 4: neutral zinc-like surfaces, a single calm accent (pick one and justify it), 8 px radius, 1 px borders, subtle shadows only on overlays, Inter-like system sans with tabular numerals, monospace for ids. Status colours: ready/ok, working/info, waiting-on-person/warning, error/danger, ended/idle/muted. Each status also has an icon or text so colour is never the only signal. Motion: none required; if shown, ≤ 150 ms and respecting reduced motion.
+
+## A5. Token sheet
+
+CSS custom properties for light and dark, named to map 1:1 onto shadcn's variables: `--background, --foreground, --card, --card-foreground, --popover, --popover-foreground, --primary, --primary-foreground, --secondary, --secondary-foreground, --muted, --muted-foreground, --accent, --accent-foreground, --destructive, --border, --input, --ring, --radius, --sidebar*`, plus status tokens `--status-ok, --status-info, --status-warn, --status-danger, --status-idle` and their `-foreground`/`-subtle` variants. Values in `oklch()`. Show each token's measured contrast against its intended background.
+
+## A6. Component inventory
+
+Table: component → shadcn primitive(s) it is built from (button, badge, card, tabs, table, dialog, alert-dialog, command, tooltip, skeleton, sonner, switch, separator, scroll-area, sheet, dropdown-menu, input) → props/variants → where used. Include app-specific compositions: AppShell, ConnectionBanner, HealthBoard, LoadMeter, FlowFunnel, StageBadge, TicketRow, Timeline (+ item kinds), EmptyState, ConfirmAction, StaleMarker, KeyValueList.
+
+## A7. Report
+
+What you checked (and how), what you could not verify, every place you departed from this brief and why, any SAMPLE value you could not place.
+
+=====================================================================
+PART B: IMPLEMENTATION BRIEF
+=====================================================================
+
+## B1. Scope and boundaries
+
+Build the console in `panel/` (already scaffolded: Vite 8, React 19, TypeScript strict, Tailwind 4, shadcn/ui on Base UI, TanStack Query and Router installed; proxy with Origin guard in `vite.config.ts`). Change nothing outside `panel/`. Add no dependency beyond those installed unless you state why.
+
+## B2. Contract
+
+- Import API types only with `import type` from `../../src/app/api.ts` (and the `TICKET_FILTERS` / `THREAD_FILTERS` arrays, the one allowed value import). Never import other host modules.
+- Typed caller `call(route, request)` modelled on `src/client/api.ts`: always send `x-orchestrator-request: 1`; classify failures as offline (fetch rejected), restarting (empty-body 404), setup (body has `setup`), user error (body has `code`), validation (`issues`), or status error, keeping the host's message.
+
+## B3. Data and polling
+
+TanStack Query hooks per route. Intervals: 3 s for state and overview, 5 s for lists, 2 s for a working Ticket's detail; no polling while the tab is hidden, refetch on focus. Keep last good data on screen with a stale marker while errors persist. No fixtures or SAMPLE data anywhere in `src/`.
+
+## B4. Routes
+
+Code-based TanStack Router tree: `/`, `/tickets` (search param `state`), `/tickets/$id`, `/threads` (search param `filter`), `/threads/$key`, `/decisions` (search param `kind`), `/sources`, `/system`. ⌘K opens search from anywhere.
+
+## B5. Writes
+
+Only: executor pause/resume (`POST executor/pause`), Ticket stop and retry, Trigger requeue, Decision dismiss, Thread unsubscribe. Each: confirm dialog stating the effect → pending state → toast with the host's result or error → invalidate affected queries. No settings or prompt editing.
+
+## B6. Design fidelity
+
+Apply the Claude Design export: its tokens go into `src/index.css` as the shadcn variables (light and dark); its layouts become compositions of the shadcn primitives in `src/components/ui`. All user-facing strings live in `src/copy.ts`. Theme follows the system with a manual toggle.
+
+## B7. Verification (operator rule: no unit tests)
+
+`pnpm -C panel typecheck`, `pnpm -C panel build` (includes the dist check), then the smoke script against `vite preview` and the live service. Do not write or run unit tests.
+
+=====================================================================
+SHARED: what "done" looks like
+=====================================================================
+
+- Every screen listed in A3 exists in the design and is implemented against live data.
+- Empty, loading, stale and error states are designed and implemented, not left to defaults.
+- Nothing presents SAMPLE data as live, and nothing presents a control as a security boundary.

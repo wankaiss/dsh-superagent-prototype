@@ -1,0 +1,120 @@
+{
+  "current": 5,
+  "policyVersion": "b406b04a698a01418069ec76baa425e9",
+  "items": [
+    {
+      "revision": 5,
+      "savedAt": "2026-11-04T13:03:29.398Z",
+      "source": "panel",
+      "block": "policy",
+      "policyVersion": "aa2775ff51359634de95c6d7141ada2c",
+      "policyChanged": true,
+      "notified": [],
+      "changes": [
+        {
+          "code": "sourceRowsAdded",
+          "source": "github",
+          "part": true,
+          "field": "allowed",
+          "items": [
+            "wankaiss"
+          ]
+        },
+        {
+          "code": "sourceRowsAdded",
+          "source": "feishu",
+          "part": true,
+          "field": "allowed",
+          "items": [
+            "杨乾辉 (operator)"
+          ]
+        }
+      ]
+    },
+    {
+      "revision": 4,
+      "savedAt": "2026-11-04T13:03:04.889Z",
+      "source": "panel",
+      "block": "source:feishu",
+      "policyVersion": "9fbbf9a0cf77f5da1785bc7d03d13b0b",
+      "policyChanged": false,
+      "notified": [],
+      "changes": [
+        {
+          "code": "sourceField",
+          "source": "feishu",
+          "field": "cli",
+          "from": "",
+          "to": "/home/gerald/.local/bin/lark-bot"
+        },
+        {
+          "code": "sourceRowsAdded",
+          "source": "feishu",
+          "field": "chats",
+          "items": [
+            "mentions"
+          ]
+        },
+        {
+          "code": "sourceField",
+          "source": "feishu",
+          "field": "directMessages",
+          "from": true,
+          "to": false
+        }
+      ]
+    },
+    {
+      "revision": 3,
+      "savedAt": "2026-11-04T13:02:54.521Z",
+      "source": "panel",
+      "block": "source:github",
+      "policyVersion": "9fbbf9a0cf77f5da1785bc7d03d13b0b",
+      "policyChanged": false,
+      "notified": [],
+      "changes": [
+        {
+          "code": "sourceField",
+          "source": "github",
+          "field": "repository",
+          "from": "",
+          "to": "wankaiss/dsh-superagent-sandbox"
+        },
+        {
+          "code": "sourceField",
+          "source": "github",
+          "field": "cli",
+          "from": "",
+          "to": "/home/gerald/.local/bin/gh-agent"
+        }
+      ]
+    },
+    {
+      "revision": 2,
+      "savedAt": "2026-11-04T13:02:39.864Z",
+      "source": "panel",
+      "block": "executor",
+      "policyVersion": "9fbbf9a0cf77f5da1785bc7d03d13b0b",
+      "policyChanged": false,
+      "notified": [],
+      "changes": [
+        {
+          "code": "executorModel"
+        },
+        {
+          "code": "prepareCommand"
+        }
+      ]
+    },
+    {
+      "revision": 1,
+      "savedAt": "2026-11-04T13:02:37.719Z",
+      "source": "panel",
+      "block": "eval",
+      "policyVersion": "9fbbf9a0cf77f5da1785bc7d03d13b0b",
+      "policyChanged": false,
+      "notified": [],
+      "changes": null
+    }
+  ]
+}

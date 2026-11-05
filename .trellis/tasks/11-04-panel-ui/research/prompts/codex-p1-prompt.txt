@@ -1,0 +1,19 @@
+Adversarial review (round P1) of two prompts that will drive (A) Claude Design producing one static hi-fi HTML prototype and (B) Claude Code agents implementing a React console. READ-ONLY: do not edit files, do not run tests or builds.
+
+Files (paths relative to the working directory ~/workloads/projects unless absolute):
+- scratch/panel-prompts/panel-system.v1.txt and scratch/panel-prompts/panel-prompt.v1.txt: ChatGPT-rewritten SYSTEM_PROMPT and PROMPT (the candidates).
+- scratch/panel-prompts/seed-system.txt and scratch/panel-prompts/seed-prompt.txt: the author's originals (source of intent).
+- /home/gerald/workloads/dsh-superagent-prototype/.trellis/tasks/11-04-panel-ui/{prd.md,design.md,grill.md}: requirements and decisions the prompts must carry (advisor verdicts at the end of grill.md).
+- /home/gerald/workloads/dsh-superagent-prototype/.trellis/tasks/11-04-panel-ui/research/design/attachments/: what Claude Design will actually receive (api-digest.md, fixtures.json = all SAMPLE routes bundled keyed by route, live.json = live snapshots bundled, ui-ideas.md).
+- /home/gerald/workloads/dsh-superagent-prototype/panel/: the existing scaffold (vite.config.ts proxy, src/api/client.ts, src/api/queries.ts, src/router.tsx, scripts/smoke.mjs, components.json = shadcn style base-nova on Base UI, not Radix).
+- /home/gerald/workloads/dsh-superagent-prototype/src/app/api.ts and src/app/http.ts: the real API contract.
+
+Try to break the candidates. Check:
+1. Fidelity to the seed and grill: 14 specimens, domain vocabulary, route list (/, /tickets?state, /tickets/$id, /threads?filter, /threads/$key, /decisions?kind, /sources, /system), the six allowed writes only, no settings/prompt editing, Session = link-out to DSH UI, no fixtures in panel/src, "controls are not a security boundary", no unit tests, English UI.
+2. Contradictions between SYSTEM_PROMPT and PROMPT, between Part A and Part B, or with the scaffold (e.g. Radix vs Base UI, file names fixtures/*.json vs the bundled fixtures.json/live.json, theme mechanism: next-themes `class` on <html>, smoke script expectations).
+3. Instructions Claude Design cannot satisfy in a static HTML file or that will make it stall (overlong, contradictory, demanding behaviour it cannot show).
+4. Facts the candidate gets wrong about this API (check api.ts/http.ts and api-digest.md): e.g. the tickets filter values, decision kinds, retry eligibility, pause semantics, what `GET state` returns.
+5. Over-specification likely to blow up length or invite fabrication; anything ChatGPT added that is not in the seed and changes product scope.
+6. Note: ChatGPT said an unrelated "review-request" attachment about RSI Founder Console was present in its chat; flag any RSI-specific residue in the candidates.
+
+Output: numbered findings with severity (high/med/low), exact quote from the candidate, why it matters, and a concrete replacement text. Verify each against the files; keep false positives low. End with a one-line verdict.

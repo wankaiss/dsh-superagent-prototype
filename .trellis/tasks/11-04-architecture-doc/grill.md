@@ -1,0 +1,27 @@
+# Grilling record: architecture-doc
+
+Operator rule: grilling runs without asking the operator; each decision goes to the advisor. Questions in dependency order, each with the recommended answer.
+
+| # | Question | Recommended answer | Depends on |
+|---|---|---|---|
+| G1 | **Purpose.** Which decision should the review page let the reader make? | (a) Whether to invest in a self-improvement loop and which "proposed" ADRs to accept. (b) What to fix before letting the agent act beyond `observe` (security ADRs). Not "learn how the code works". system-map covers that. | — |
+| G2 | **Drivers.** No business owner has stated drivers. Where do DRV-nn come from? | From the article's own goals (human attention as the bottleneck, §1/§9; continuity + throughput, §2; proactivity, §3; persistence, §5–6; safety, §8.4) and the operator's local-run goals. Each is labelled "source: article §n / operator; confirmation: unassigned". No invented targets; QAS measures come from article §7 numbers where they exist, otherwise "target: TBD (OPEN-nn)". | G1 |
+| G3 | **What may the loop learn?** | v1: proposals only, for (i) prompt team sections and (ii) policy rule *instructions* (text), plus (iii) an offline evaluation harness that replays recorded Triggers. Never in scope: allow-lists, `eval.mode`, pause, executor environment, accounts, model or provider. Those stay human-only and are enforced server-side (Codex #4). | G1, G2 |
+| G4 | **Where do labels come from?** | Independent human judgements: operator verdicts on Decisions and Tickets (panel control + Feishu reaction, as a proposal), and outcome signals the system already records: PR merged or closed, hand-backs, follow-ups, stops (system-map §12). `would_accept` is a prediction to evaluate, never a label (Codex #9). | G3 |
+| G5 | **Where does the loop run?** | Outside the worker trust zone: a separate process or profile with read-only access to an exported learning-event stream, and a narrow "submit proposal" interface; approval through the panel only. Workers keep no route to it (Codex #3). Learning events are written in the same transaction as the domain change and exported after commit (Codex #10). | G3 |
+| G6 | **Attribution granularity.** | Per Assignment and per main-Session request: an immutable binding of prompt revision, policy version and model/provider (Codex #8). This is a prerequisite ADR before any comparison of versions. | G5 |
+| G7 | **Runtime evidence gap.** E2E hasn't run. Generate now or wait? | Generate now; tag lifecycle claims *(from code, runtime-unverified)*. After the E2E lands, re-run only the consistency agent with the observed Ticket timeline and swap the tags. | — |
+| G8 | **Depth.** Is "Stages 1–3 summarise-and-cite" enough to pass the method's Stage Exit Criteria? | Yes for a reverse-documentation of a built prototype. Exit criteria not met are listed as OPEN with the reason (e.g. no business owner), not papered over. | G2 |
+| G9 | **Prompt review rounds.** | ChatGPT once. Codex once on the prompts (P1). Codex on the result R1, and R2 only if high or medium findings remain after fixes. | — |
+| G10 | **ChatGPT failure modes.** Not logged in, rate limited, or reply not two fenced blocks? | Verify the account name in the page before pasting; if not logged in, a Feishu DM to the operator (operator step) and pause step 4 only. If the reply lacks two blocks, send one follow-up asking for exactly two blocks; if that still fails, use the seed and record the deviation. | — |
+| G11 | **Who sees the page?** Publish it? | Build a local HTML file; it contains internal ids (Feishu chat, accounts) but no secrets. Offer to publish as a private Artifact in one line; do not publish unasked. | G1 |
+| G12 | **Self-improvement vs the article's attention principle.** Could the loop itself waste human attention (approval spam)? | Yes. Add QAS on human effort: batched weekly proposals, a cap on open proposals, and no proposal without an expected-effect estimate from the offline harness. | G3, G4 |
+| G13 | **Fork or upstream?** Self-improvement needs code changes (durable events, attribution, approval endpoint). | Fork-first with upstream-compatible seams: no edits to `src/core`; attach through the DomainEvent port and a new plugin/Source. "Upstream contribution" stays OPEN. Shapes every proposed ADR's rollout. | G5, G6 |
+
+## Advisor verdicts (2026-11-04)
+
+- Approved as written: G1, G3, G4, G6, G7, G8, G9, G10, G11, G12.
+- **G5 corrected:** workers run `danger-full-access` as the operator's OS user, so on this machine *nothing* is protected from a worker (loopback API headers are caller-supplied; files and sockets are readable). An approval gate is meaningful only after a trust boundary exists between workers and the operator (article §5.2, future-only today). Design states it as a **precondition**: ADR "worker isolation (separate OS user / container / remote environment) precedes any auto-applied change"; RISK "until then the approval gate is advisory; a worker can forge approval".
+- **G2 corrected:** article §7 numbers are *reference points* (internal system, synthetic load), never QAS targets. Every prototype target is "TBD (OPEN-nn)" until measured locally.
+- **G3 sharpened:** policy rule *instructions* change what the agent does; proposal-only, but approved under the same class as authorization changes, not like prompt wording.
+- **G13 added:** fork-first, upstream-compatible seams; upstream contribution OPEN.

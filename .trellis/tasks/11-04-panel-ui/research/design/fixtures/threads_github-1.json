@@ -1,0 +1,217 @@
+{
+  "key": "github:1",
+  "source": "github",
+  "title": "#1 sum() is wrong for negative numbers",
+  "stage": "dormant",
+  "latest": {
+    "actor": {
+      "source": "github",
+      "id": "lin-qa",
+      "name": {
+        "zh": "lin-qa",
+        "en": "lin-qa"
+      }
+    },
+    "human": true,
+    "at": "2026-11-05T01:03:55.000Z",
+    "preview": "Also sum([]) raises TypeError instead of returning 0."
+  },
+  "lastAt": "2026-11-05T01:03:55.000Z",
+  "createdAt": "2026-11-05T01:02:40.000Z",
+  "subscriptions": 1,
+  "tickets": [
+    {
+      "id": "494111129f662c07b81d267850f4c507",
+      "title": "Fix sum() for negative numbers",
+      "undelivered": 0,
+      "directory": "/home/gerald/.dsh/state/superagent/work/fix-sum-negatives-494111129f66",
+      "createdAt": "2026-11-05T01:10:31.000Z",
+      "updatedAt": "2026-11-05T02:24:31.000Z",
+      "strength": "explicit",
+      "state": "ended",
+      "stage": "ended",
+      "actions": {
+        "retry": false,
+        "stop": false
+      },
+      "ended": {
+        "at": "2026-11-05T02:24:30.000Z",
+        "by": "executor",
+        "outcome": "merged"
+      },
+      "assignments": 1,
+      "inputs": 3,
+      "sessionId": "worker-494111129f662c07b81d267850f4c507",
+      "summary": "Fixed sum() for negative numbers and empty lists, with tests; opened PR #3 (https://github.com/wankaiss/dsh-superagent-sandbox/pull/3).",
+      "threads": [
+        {
+          "key": "github:1",
+          "source": "github",
+          "title": "#1 sum() is wrong for negative numbers",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/1",
+          "facts": {
+            "number": {
+              "value": "#1"
+            }
+          }
+        },
+        {
+          "key": "feishu:oc_37b3a567bce3a9e65953096b75696064:om_x100b34b0de0beef32048157e2d94",
+          "source": "feishu",
+          "title": "@杨乾辉的飞书 CLI please fix https://github.com/wankaiss/dsh-superagent-sandbox/issues",
+          "url": "https://applink.feishu.cn/client/chat/open?openChatId=oc_37b3a567bce3a9e65953096b75696064",
+          "facts": {
+            "chat": {
+              "value": "dsh-superagent sandbox"
+            }
+          }
+        },
+        {
+          "key": "github:3",
+          "source": "github",
+          "title": "#3 Fix sum() for negative numbers and empty lists",
+          "url": "https://github.com/wankaiss/dsh-superagent-sandbox/pull/3",
+          "facts": {
+            "number": {
+              "value": "#3"
+            },
+            "ci": {
+              "label": "CI",
+              "value": {
+                "zh": "通过",
+                "en": "passed"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "pending": 0,
+  "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/1",
+  "facts": {
+    "number": {
+      "value": "#1"
+    }
+  },
+  "context": [
+    "494111129f662c07b81d267850f4c507"
+  ],
+  "correlated": [],
+  "decisions": [
+    {
+      "id": "f0626db2ec552044d5e33fad3695c896",
+      "kind": "ignore",
+      "outcome": "ignore",
+      "reason": [
+        {
+          "code": "noRuleMatched"
+        }
+      ],
+      "at": "2026-11-05T01:05:10.000Z",
+      "strength": "inferred",
+      "triggerIds": [
+        "f9edf9cac0262c6cb2b7eb138baa8877",
+        "1206595b07dd0e677d7cda0ce24dfc56"
+      ],
+      "thread": "github:1",
+      "rules": [
+        {
+          "id": "copy",
+          "name": "Copy fixes",
+          "matched": false,
+          "reason": "A behaviour bug in sum(), not a wording fix."
+        },
+        {
+          "id": "visual",
+          "name": "Visual fixes",
+          "matched": false,
+          "reason": "Not a styling change."
+        }
+      ],
+      "threadTitle": "#1 sum() is wrong for negative numbers",
+      "preview": "sum() is wrong for negative numbers @wankaiss sum([-1, -2]) returns 3, expected -3. / Also sum([]) raises TypeError instead of returning 0."
+    }
+  ],
+  "timeline": [
+    {
+      "id": "f9edf9cac0262c6cb2b7eb138baa8877",
+      "source": "github",
+      "actor": {
+        "source": "github",
+        "id": "lin-qa",
+        "name": {
+          "zh": "lin-qa",
+          "en": "lin-qa"
+        }
+      },
+      "human": true,
+      "at": "2026-11-05T01:02:40.000Z",
+      "text": "sum() is wrong for negative numbers\n\n@wankaiss sum([-1, -2]) returns 3, expected -3.",
+      "preview": "sum() is wrong for negative numbers @wankaiss sum([-1, -2]) returns 3, expected -3.",
+      "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/1",
+      "threads": [
+        "github:1"
+      ],
+      "actions": {
+        "requeue": false
+      },
+      "disposition": {
+        "queued": false,
+        "evaluating": false,
+        "delivered": false,
+        "fanout": [],
+        "handbacks": [],
+        "decision": {
+          "id": "f0626db2ec552044d5e33fad3695c896",
+          "outcome": "ignore",
+          "reason": [
+            {
+              "code": "noRuleMatched"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "1206595b07dd0e677d7cda0ce24dfc56",
+      "source": "github",
+      "actor": {
+        "source": "github",
+        "id": "lin-qa",
+        "name": {
+          "zh": "lin-qa",
+          "en": "lin-qa"
+        }
+      },
+      "human": true,
+      "at": "2026-11-05T01:03:55.000Z",
+      "text": "Also sum([]) raises TypeError instead of returning 0.",
+      "preview": "Also sum([]) raises TypeError instead of returning 0.",
+      "url": "https://github.com/wankaiss/dsh-superagent-sandbox/issues/1#issuecomment-2400000001",
+      "threads": [
+        "github:1"
+      ],
+      "actions": {
+        "requeue": false
+      },
+      "disposition": {
+        "queued": false,
+        "evaluating": false,
+        "delivered": false,
+        "fanout": [],
+        "handbacks": [],
+        "decision": {
+          "id": "f0626db2ec552044d5e33fad3695c896",
+          "outcome": "ignore",
+          "reason": [
+            {
+              "code": "noRuleMatched"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "earlier": null
+}
