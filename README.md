@@ -16,6 +16,10 @@ Setup has many steps, so an agent does it with you. Ask your coding agent:
 
 It asks one short question at a time, shows the full plan once, and then installs and configures everything. [SETUP.md](SETUP.md) is what it follows.
 
+## Startup
+
+On a machine that is already set up, [STARTUP.md](STARTUP.md) is the current way to start, stop and check the service: the `dsh-superagent-local` launcher, the `superagent` profile, where the UI, console and logs are, and what to rebuild after a code change.
+
 ## Documentation
 
 Read the numbered documents in order; each builds only on the ones before it.
